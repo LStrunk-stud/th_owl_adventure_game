@@ -41,7 +41,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Bakcground
+  - name: Background
     uniqueID: 3725894807
     locked: 0
   - name: Characters
