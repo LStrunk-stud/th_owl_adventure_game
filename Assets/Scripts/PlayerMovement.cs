@@ -3,6 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement Instance;
+
     private PlayerControls controls;
 
     public float speed = 3f;
@@ -13,8 +15,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        Instance = this;
         controls = new PlayerControls();
     }
+
 
     void OnEnable()
     {
@@ -35,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnClick(InputAction.CallbackContext ctx)
     {
+        if (!enabled) return;
+        
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         mouseWorldPos.z = 0f;
 

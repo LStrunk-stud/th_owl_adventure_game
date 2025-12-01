@@ -34,6 +34,14 @@ public class ItemClickPickup : MonoBehaviour
             if (ip != null)
             {
                 ip.Pickup();
+                return;
+            }
+
+            NPCInteract npc = hit.collider.GetComponent<NPCInteract>();
+            if (npc != null)
+            {
+                npc.Interact();
+                return;
             }
         }
     }
