@@ -13,12 +13,13 @@ public class PlayerMovement : MonoBehaviour
 
     public PolygonCollider2D walkArea;
 
+    public bool canMove = true;
+
     void Awake()
     {
         Instance = this;
         controls = new PlayerControls();
     }
-
 
     void OnEnable()
     {
@@ -39,9 +40,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnClick(InputAction.CallbackContext ctx)
     {
-        if (!enabled) return;
-        
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        if (!canMove) return;
+
+        Vector3 mouseWorldPos =
+            Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         mouseWorldPos.z = 0f;
 
         if (!walkArea.OverlapPoint(mouseWorldPos))
@@ -53,7 +55,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!moving) return;
+        Debug.Log("POS: " + transform.position);
+
+        if (!moving || !canMove) return;
 
         transform.position = Vector3.MoveTowards(
             transform.position,

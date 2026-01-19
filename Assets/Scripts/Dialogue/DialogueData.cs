@@ -1,15 +1,8 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewDialogue", menuName = "Dialogue/DialogueData")]
+[CreateAssetMenu(menuName = "Dialogue/Dialogue Data")]
 public class DialogueData : ScriptableObject
 {
-    [System.Serializable]
-    public class DialogueLine
-    {
-        public string speakerName;       
-        [TextArea] public string text;   
-        public string[] options;          
-    }
-
-    public DialogueLine[] lines;
+    [TextArea(3, 5)]
+    public string[] lines;
 }
