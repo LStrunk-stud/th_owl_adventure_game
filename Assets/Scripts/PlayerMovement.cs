@@ -5,20 +5,27 @@ public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement Instance;
 
-    private PlayerControls controls;
-
-    public float speed = 3f;
-    private Vector3 targetPos;
-    private bool moving = false;
-
-    public PolygonCollider2D walkArea;
+    [SerializeField] private Camera worldCamera;
+    [SerializeField] private PolygonCollider2D walkArea;
+    [SerializeField] private float speed = 3f;
+    [SerializeField] private float stopDistance = 0.05f;
 
     public bool canMove = true;
+
+    private PlayerControls controls;
+    private Vector3 targetPos;
+    private bool moving;
 
     void Awake()
     {
         Instance = this;
         controls = new PlayerControls();
+        targetPos = transform.position;
+    }
+
+    void Start()
+    {
+        if (worldCamera == null) worldCamera = Camera.main;
     }
 
     void OnEnable()
@@ -33,39 +40,30 @@ public class PlayerMovement : MonoBehaviour
         controls.Disable();
     }
 
-    void Start()
-    {
-        targetPos = transform.position;
-    }
-
-    private void OnClick(InputAction.CallbackContext ctx)
+    void OnClick(InputAction.CallbackContext ctx)
     {
         if (!canMove) return;
+        if (worldCamera == null || walkArea == null) return;
 
-        Vector3 mouseWorldPos =
-            Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        mouseWorldPos.z = 0f;
+        float depth = Mathf.Abs(worldCamera.transform.position.z - transform.position.z);
 
-        if (!walkArea.OverlapPoint(mouseWorldPos))
-            return;
+        Vector2 mouseScreen = Mouse.current.position.ReadValue();
+        Vector3 mouseWorld = worldCamera.ScreenToWorldPoint(new Vector3(mouseScreen.x, mouseScreen.y, depth));
+        mouseWorld.z = transform.position.z;
 
-        targetPos = mouseWorldPos;
+        if (!walkArea.OverlapPoint(mouseWorld)) return;
+
+        targetPos = mouseWorld;
         moving = true;
     }
 
     void Update()
     {
-        Debug.Log("POS: " + transform.position);
+        if (!canMove || !moving) return;
 
-        if (!moving || !canMove) return;
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            targetPos,
-            speed * Time.deltaTime
-        );
-
-        if (Vector3.Distance(transform.position, targetPos) < 0.05f)
+        if (Vector3.Distance(transform.position, targetPos) <= stopDistance)
             moving = false;
     }
 }
