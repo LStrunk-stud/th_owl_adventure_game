@@ -17,9 +17,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartScene.unity
     guid: dab1cc2c8436ba84d9fdc78b0408c4d6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 472238d9652ee5b4abe455e213f84102
+  - enabled: 1
+    path: Assets/Scenes/ApartmentBedroom.unity
+    guid: 989dd34edcdac8a4e920dca0420b33f6
+  - enabled: 1
+    path: Assets/Scenes/ApartmentLivingroom.unity
+    guid: 46c1649c80018404a821cd82c3e7d82b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: e0ef46deb01711640870b961661b188e, type: 3}
   m_UseUCBPForAssetBundles: 0
