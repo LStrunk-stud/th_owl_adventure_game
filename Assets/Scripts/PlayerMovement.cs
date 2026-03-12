@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerMovement Instance;
 
     [SerializeField] private Camera worldCamera;
-    [SerializeField] private PolygonCollider2D walkArea;
+    private PolygonCollider2D walkArea;
     [SerializeField] private float speed = 3f;
     [SerializeField] private float stopDistance = 0.05f;
 
@@ -45,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         if (!canMove) return;
         if (worldCamera == null || walkArea == null) return;
 
+        // Depth for ScreenToWorldPoint
         float depth = Mathf.Abs(worldCamera.transform.position.z - transform.position.z);
 
         Vector2 mouseScreen = Mouse.current.position.ReadValue();
@@ -65,5 +66,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(transform.position, targetPos) <= stopDistance)
             moving = false;
+    }
+
+    public void SetWalkArea(PolygonCollider2D area)
+    {
+        walkArea = area;
     }
 }
