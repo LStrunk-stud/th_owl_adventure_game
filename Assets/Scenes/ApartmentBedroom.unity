@@ -164,6 +164,100 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &244265498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 244265501}
+  - component: {fileID: 244265500}
+  - component: {fileID: 244265502}
+  m_Layer: 6
+  m_Name: Door_to_Livingroom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &244265500
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244265498}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 1.4841282, y: 0.26016784}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.55171025, y: 1.0949036}
+  m_EdgeRadius: 0
+--- !u!4 &244265501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244265498}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.036, y: -0.634, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &244265502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244265498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8d13d7fabf9984f83f020908eaaebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TransitionHotspot
+  targetScene: ApartmentLivingroom
+  targetSpawnName: FromBedroom
+  standPoint: {fileID: 1545327990}
 --- !u!1001 &568698251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -566,7 +660,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15.36, y: 10.24}
+    oldSize: {x: 2.92, y: 2.7}
     newSize: {x: 51.260956, y: 8.410001}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -574,17 +668,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 7.605534, y: -5.086363}
-      - {x: 7.608019, y: -1.2526515}
-      - {x: 4.198319, y: -1.1944908}
-      - {x: 2.9043467, y: -2.7936935}
-      - {x: -1.1048619, y: -2.580016}
-      - {x: -1.2202997, y: -1.3918467}
-      - {x: -2.4704905, y: -1.316061}
-      - {x: -4.2326975, y: -1.8321943}
-      - {x: -5.1261635, y: -2.4376743}
-      - {x: -7.6522417, y: -2.0112998}
-      - {x: -7.686889, y: -5.120761}
+    - - {x: -1.2996099, y: -0.6570234}
+      - {x: -0.92916703, y: -1.1862411}
+      - {x: 1.291473, y: -1.2005334}
+      - {x: 1.3033066, y: 0.5576986}
+      - {x: -0.30051133, y: 0.5593563}
+      - {x: -0.29840523, y: 0.23196748}
+      - {x: -1.2963338, y: 0.23333967}
   m_UseDelaunayMesh: 0
 --- !u!212 &692626323
 SpriteRenderer:
@@ -633,7 +723,7 @@ SpriteRenderer:
   m_SortingLayerID: -569072489
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2643479118363623408, guid: f634a00b2c67b0045bc59d979e72b5a7, type: 3}
+  m_Sprite: {fileID: -8474835174971745396, guid: 05ff9cf2c07a48046a0c558a35861a50, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -653,8 +743,8 @@ Transform:
   m_GameObject: {fileID: 692626321}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0052, y: 0.0058, z: 0}
-  m_LocalScale: {x: 0.24, y: 0.24, z: 0.24}
+  m_LocalPosition: {x: 0.25, y: -0.1829, z: 0}
+  m_LocalScale: {x: 0.852715, y: 0.852715, z: 0.852715}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -1005,6 +1095,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66a889ea3e90d6a4fb310b8e04cf6a50, type: 3}
+--- !u!1 &1545327989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1545327990}
+  m_Layer: 0
+  m_Name: DoorStandPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1545327990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545327989}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.439, y: -0.377, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1827132934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1707,3 +1828,5 @@ SceneRoots:
   - {fileID: 1008589888}
   - {fileID: 568698251}
   - {fileID: 1827132934}
+  - {fileID: 244265501}
+  - {fileID: 1545327990}
