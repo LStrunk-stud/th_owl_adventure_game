@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f634a00b2c67b0045bc59d979e72b5a7
+guid: 1694847a03fec9d4ab556424f88f7b9e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2643479118363623408
-    second: "ChatGPT Image 10. M\xE4rz 2026, 11_16_07_0"
+      213: 379379244860064370
+    second: Top_Down_Livingroom_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -74,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "ChatGPT Image 10. M\xE4rz 2026, 11_16_07_0"
+      name: Top_Down_Livingroom_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 275
         y: 0
-        width: 1536
-        height: 1024
+        width: 481
+        height: 405
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 01006c26fb9705bd0800000000000000
-      internalID: -2643479118363623408
+      spriteID: 2724a05c963d34500800000000000000
+      internalID: 379379244860064370
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "ChatGPT Image 10. M\xE4rz 2026, 11_16_07_0": -2643479118363623408
+      Top_Down_Livingroom_0: 379379244860064370
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
