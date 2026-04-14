@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8d13d7fabf9984f83f020908eaaebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TransitionHotspot
-  targetScene: ApartmentLivingroom
+  targetScene: Room_ApartmentLivingroom
   targetSpawnName: FromBedroom
   standPoint: {fileID: 1545327990}
 --- !u!1 &692626321
