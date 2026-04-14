@@ -2004,6 +2004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuController
   mainMenuPanel: {fileID: 686511354}
   settingsPanel: {fileID: 1405925933}
+  sceneIndex: 1
 --- !u!1 &1106780313
 GameObject:
   m_ObjectHideFlags: 0
