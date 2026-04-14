@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement Instance;
@@ -8,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float stopDistance = 0.05f;
 
     private PolygonCollider2D walkArea;
+    private Rigidbody2D rb;
 
     public bool canMove = true;
 
@@ -17,20 +19,24 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        rb = GetComponent<Rigidbody2D>(); 
+
         targetPos = transform.position;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!canMove || !moving) return;
 
-        transform.position = Vector3.MoveTowards(
-            transform.position,
+        Vector2 newPos = Vector2.MoveTowards(
+            rb.position,
             targetPos,
-            speed * Time.deltaTime
+            speed * Time.fixedDeltaTime
         );
 
-        if (Vector3.Distance(transform.position, targetPos) <= stopDistance)
+        rb.MovePosition(newPos);
+
+        if (Vector2.Distance(rb.position, targetPos) <= stopDistance)
             moving = false;
     }
 
