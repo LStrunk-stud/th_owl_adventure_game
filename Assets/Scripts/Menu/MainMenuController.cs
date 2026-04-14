@@ -5,10 +5,11 @@ public class MainMenuController : MonoBehaviour
 {
     public GameObject mainMenuPanel;
     public GameObject settingsPanel;
+    [SerializeField] private int sceneIndex;
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Room_ApartmentBedroom");
+        SceneManager.LoadScene(sceneIndex);
     }
 
     public void OpenSettings()
