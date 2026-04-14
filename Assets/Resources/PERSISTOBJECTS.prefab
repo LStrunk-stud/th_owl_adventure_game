@@ -114,7 +114,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 18.6
+  field of view: 26
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -182,8 +182,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.4921, y: -0.4777, z: 0}
-  m_LocalScale: {x: 0.91947615, y: 0.9718495, z: 0.62647414}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6148028996065648969}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
