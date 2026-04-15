@@ -6,9 +6,38 @@ public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader Instance;
 
+    [SerializeField] private string gameplayPrefix = "Room";
+    [SerializeField] private GameObject gameplayCanvas;
+
     void Awake()
     {
         Instance = this;
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        bool isGameplayScene = scene.name.StartsWith(gameplayPrefix);
+
+        Debug.Log("Scene Loaded: " + scene.name + " | Gameplay: " + isGameplayScene);
+
+        if (gameplayCanvas != null)
+            gameplayCanvas.SetActive(isGameplayScene);
+
+        if (PlayerMovement.Instance != null)
+        {
+            PlayerMovement.Instance.gameObject.SetActive(isGameplayScene);
+            PlayerMovement.Instance.canMove = isGameplayScene;
+        }
     }
 
     public void LoadRoom(string sceneName, string spawnName)
@@ -18,11 +47,11 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator LoadRoutine(string sceneName, string spawnName)
     {
-        PlayerMovement.Instance.canMove = false;
+        if (PlayerMovement.Instance != null)
+            PlayerMovement.Instance.canMove = false;
 
         yield return SceneManager.LoadSceneAsync(sceneName);
 
-        // Spawn setzen
         var spawns = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None);
 
         foreach (var sp in spawns)
@@ -34,6 +63,7 @@ public class SceneLoader : MonoBehaviour
             }
         }
 
-        PlayerMovement.Instance.canMove = true;
+        if (PlayerMovement.Instance != null)
+            PlayerMovement.Instance.canMove = true;
     }
 }
