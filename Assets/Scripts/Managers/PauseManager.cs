@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+public class PauseManager : MonoBehaviour
 {
-    public static UIManager Instance {get; private set;}
 
     [Header("Panels")]
     [SerializeField] private GameObject pausePanel;
@@ -14,13 +13,6 @@ public class UIManager : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
         ResumeGame();
     }
 
@@ -67,7 +59,7 @@ public class UIManager : MonoBehaviour
         if (pauseMenuContainer)pauseMenuContainer.SetActive(false);
         if (settingsPanel) settingsPanel.SetActive(false);
 
-        SceneManager.LoadScene("StartScene");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void OpenSettings()
