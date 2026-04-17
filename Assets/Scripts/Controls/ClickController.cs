@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class ClickController : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class ClickController : MonoBehaviour
     {
         if (Mouse.current == null) return;
         if (!Mouse.current.leftButton.wasPressedThisFrame) return;
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
         if (!PlayerMovement.Instance.canMove) return;
 
         Vector3 world = GetMouseWorld();
