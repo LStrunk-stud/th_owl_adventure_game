@@ -2282,7 +2282,7 @@ MonoBehaviour:
   speakerNameText: {fileID: 8666746406426880992}
   dialogueText: {fileID: 7191882311996895111}
   optionsContainer: {fileID: 1011119553325079846}
-  optionButtonPrefab: {fileID: 0}
+  optionButtonPrefab: {fileID: 1891791713000860293, guid: 82bb40ae0ee75b74cb20a45705a160bf, type: 3}
   worldOffset: {x: 0, y: 1.5, z: 0}
   worldCamera: {fileID: 0}
 --- !u!1 &4190798828945830722

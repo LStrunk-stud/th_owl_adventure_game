@@ -2,27 +2,28 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-/// Controls the dialogue panel in the GameplayCanvas.
-/// Follows the speaker in world space and displays lines + options.
 public class DialogueUI : MonoBehaviour
 {
     public static DialogueUI Instance { get; private set; }
 
     [Header("Panel")]
-    [SerializeField] private GameObject     dialoguePanel;
+    [SerializeField] private GameObject      dialoguePanel;
     [SerializeField] private TextMeshProUGUI speakerNameText;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     [Header("Options")]
-    [SerializeField] private GameObject     optionsContainer;
-    [SerializeField] private GameObject     optionButtonPrefab;
+    [SerializeField] private GameObject optionsContainer;
+    [SerializeField] private GameObject optionButtonPrefab;
 
     [Header("Follow Settings")]
-    [SerializeField] private Vector3        worldOffset = new Vector3(0f, 1.5f, 0f);
-    [SerializeField] private Camera         worldCamera;
+    [SerializeField] private Vector3 worldOffset = new Vector3(0f, 1.5f, 0f);
+    [SerializeField] private Camera  worldCamera;
 
     private Transform _currentSpeaker;
     private bool      _showingOptions;
+
+    // Prevents the same click that opens the dialogue from immediately advancing it
+    private bool _inputBlocked;
 
     void Awake()
     {
@@ -38,9 +39,16 @@ public class DialogueUI : MonoBehaviour
 
     void Update()
     {
-        // Follow speaker in world space
+        // Follow speaker in world space every frame
         if (dialoguePanel.activeSelf && _currentSpeaker != null)
             PositionAboveSpeaker(_currentSpeaker);
+
+        // Unblock input one frame after dialogue started
+        if (_inputBlocked)
+        {
+            _inputBlocked = false;
+            return;
+        }
 
         // Advance on click — only when showing lines, not options
         if (!_showingOptions && DialogueManager.Instance.IsPlaying)
@@ -59,6 +67,7 @@ public class DialogueUI : MonoBehaviour
     {
         _currentSpeaker = speaker;
         _showingOptions = false;
+        _inputBlocked   = true;  // Block for one frame so the opening click doesn't advance
 
         ClearOptions();
         optionsContainer.SetActive(false);
@@ -76,12 +85,11 @@ public class DialogueUI : MonoBehaviour
     {
         _currentSpeaker = speaker;
         _showingOptions = true;
+        _inputBlocked   = true;
 
         ClearOptions();
         optionsContainer.SetActive(true);
-
-        // Hide the main text area while options are shown
-        dialogueText.text = "";
+        dialogueText.text    = "";
         speakerNameText.text = "";
 
         foreach (var option in options)
@@ -90,9 +98,8 @@ public class DialogueUI : MonoBehaviour
             var label  = btnGO.GetComponentInChildren<TextMeshProUGUI>();
             var button = btnGO.GetComponent<Button>();
 
-            if (label)  label.text = option.optionText;
+            if (label) label.text = option.optionText;
 
-            // Capture option in closure
             var captured = option;
             button.onClick.AddListener(() => DialogueManager.Instance.ChooseOption(captured));
         }
@@ -106,6 +113,7 @@ public class DialogueUI : MonoBehaviour
         ClearOptions();
         _currentSpeaker = null;
         _showingOptions = false;
+        _inputBlocked   = false;
     }
 
     // ── Helpers ───────────────────────────────────────────────────────────────
@@ -114,9 +122,8 @@ public class DialogueUI : MonoBehaviour
     {
         if (worldCamera == null || speaker == null) return;
 
-        Vector3 worldPos   = speaker.position + worldOffset;
-        Vector3 screenPos  = worldCamera.WorldToScreenPoint(worldPos);
-
+        Vector3 worldPos  = speaker.position + worldOffset;
+        Vector3 screenPos = worldCamera.WorldToScreenPoint(worldPos);
         dialoguePanel.transform.position = screenPos;
     }
 
