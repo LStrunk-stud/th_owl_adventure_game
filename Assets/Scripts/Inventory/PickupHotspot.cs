@@ -14,9 +14,14 @@ public class PickupHotspot : MonoBehaviour
             return;
         }
 
-        InventoryManager.Instance.AddItem(item);
+        // Don't pick up regular items if backpack isn't unlocked yet
+        if (!item.isBackpack && !InventoryManager.Instance.BackpackUnlocked)
+        {
+            Debug.Log($"[PickupHotspot] Can't pick up '{item.itemName}' — backpack not unlocked.");
+            return;
+        }
 
-        // Remove the object from the world after pickup
+        InventoryManager.Instance.AddItem(item);
         Destroy(gameObject);
     }
 }
