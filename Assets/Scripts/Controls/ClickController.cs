@@ -27,6 +27,10 @@ public class ClickController : MonoBehaviour
 
         // UI clicks are handled by Unity's EventSystem — don't raycast into the world
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
+
+        // While dialogue is playing, clicks are consumed by DialogueUI — don't move or interact
+        if (DialogueManager.Instance.IsPlaying) return;
+
         if (!PlayerMovement.Instance.canMove) return;
 
         Vector3 world = GetMouseWorld();
@@ -34,7 +38,7 @@ public class ClickController : MonoBehaviour
 
         if (hit.collider != null)
         {
-            // ── Item held: try to use or pick up ────────────────────────────
+            // Item held: try to use
             if (ItemSelectionState.Instance.HasSelection)
             {
                 var use = hit.collider.GetComponent<UseHotspot>();
@@ -43,27 +47,21 @@ public class ClickController : MonoBehaviour
                     use.TryUse(ItemSelectionState.Instance.SelectedItem);
                     return;
                 }
-                // Clicked on something else while holding an item — do nothing
                 return;
             }
 
-            // ── No item held: check for pickup or transition ─────────────────
+            // No item held: NPC first, then pickup, then transition
+            var npc = hit.collider.GetComponent<NpcHotspot>();
+            if (npc != null) { npc.Interact(); return; }
+
             var pickup = hit.collider.GetComponent<PickupHotspot>();
-            if (pickup != null)
-            {
-                pickup.Pickup();
-                return;
-            }
+            if (pickup != null) { pickup.Pickup(); return; }
 
             var transition = hit.collider.GetComponent<TransitionHotspot>();
-            if (transition != null)
-            {
-                transition.Activate();
-                return;
-            }
+            if (transition != null) { transition.Activate(); return; }
         }
 
-        // ── Nothing hit: move player (only when no item is held) ────────────
+        // Nothing hit: move player
         if (!ItemSelectionState.Instance.HasSelection)
             PlayerMovement.Instance.MoveTo(world);
     }
