@@ -1,13 +1,14 @@
 using UnityEngine;
 
-/// A selectable player response option.
-/// Optionally links to a follow-up DialogueData asset.
 [System.Serializable]
 public class DialogueOption
 {
-    [Tooltip("The text shown on the option button.")]
+    [Tooltip("Text shown on the button.")]
     public string optionText;
 
-    [Tooltip("The dialogue that plays when this option is chosen. Leave empty to end dialogue.")]
+    [Tooltip("Dialogue that plays when chosen. Leave empty to return to main options.")]
     public DialogueData nextDialogue;
+
+    [Tooltip("Check this to make this option END the conversation instead of looping back.")]
+    public bool isEndOption = false;
 }

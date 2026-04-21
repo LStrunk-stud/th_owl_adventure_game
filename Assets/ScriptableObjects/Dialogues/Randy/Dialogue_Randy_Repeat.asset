@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b577ddb795ab10f44b8b39f5a07fafc3, type: 3}
-  m_Name: Dialogue_NPC_Test
+  m_Name: Dialogue_Randy_Repeat
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
-  - speakerName: Fred
-    speakerColor: {r: 1, g: 1, b: 1, a: 1}
-    text: "Hey, warum quatscht du mich einfach os an. Denkst du das w\xE4re ien Test"
+  - speaker: {fileID: 11400000, guid: 096d46a893f0eec4aa76b52b8919b692, type: 2}
+    text: 'Hey, da bist du ja wieder. '
+  - speaker: {fileID: 11400000, guid: 096d46a893f0eec4aa76b52b8919b692, type: 2}
+    text: Hast du was vergessen?
   options: []
+  repeatingDialogue: {fileID: 0}

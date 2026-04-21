@@ -1,27 +1,53 @@
 using UnityEngine;
 
-/// Attach to any NPC. Holds the dialogue data and starts the conversation.
-/// The speaker transform is this object's transform by default,
-/// but can be overridden (e.g. to point at a speech bubble anchor).
+/// Attach to any NPC.
+/// Flow:
+///   First talk  -> greetingDialogue (intro lines) -> mainOptionsDialogue (loop)
+///   Later talks -> repeatingDialogue (short lines) -> mainOptionsDialogue (loop)
+///   Each chosen option returns here automatically after its lines finish.
 public class DialogueTrigger : MonoBehaviour
 {
-    [SerializeField] private DialogueData dialogueData;
+    [Header("Dialogues")]
+    [Tooltip("Plays once on first contact. Should end with no options — Manager jumps to Main Options.")]
+    [SerializeField] private DialogueData greetingDialogue;
 
-    [Tooltip("The point the dialogue box follows. Leave empty to use this transform.")]
+    [Tooltip("The option menu the player always returns to after each choice.")]
+    [SerializeField] private DialogueData mainOptionsDialogue;
+
+    [Tooltip("Short lines on repeat contact, then jumps to Main Options.")]
+    [SerializeField] private DialogueData repeatingDialogue;
+
+    [Header("Anchor")]
     [SerializeField] private Transform speakerAnchor;
+
+    private bool _hasSpoken = false;
+
+    public DialogueData MainOptionsDialogue => mainOptionsDialogue;
 
     public void StartDialogue()
     {
-        if (dialogueData == null)
-        {
-            Debug.LogWarning($"[DialogueTrigger] No DialogueData assigned on '{gameObject.name}'.");
-            return;
-        }
-
-        // Don't start a new dialogue while one is already playing
         if (DialogueManager.Instance.IsPlaying) return;
 
         Transform anchor = speakerAnchor != null ? speakerAnchor : transform;
-        DialogueManager.Instance.PlayDialogue(dialogueData, anchor);
+
+        if (!_hasSpoken)
+        {
+            _hasSpoken = true;
+
+            if (greetingDialogue != null)
+            {
+                DialogueManager.Instance.PlayDialogue(greetingDialogue, anchor, this);
+                return;
+            }
+        }
+        else if (repeatingDialogue != null)
+        {
+            DialogueManager.Instance.PlayDialogue(repeatingDialogue, anchor, this);
+            return;
+        }
+
+        // Fallback: go straight to main options
+        if (mainOptionsDialogue != null)
+            DialogueManager.Instance.PlayDialogue(mainOptionsDialogue, anchor, this);
     }
 }
