@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1694847a03fec9d4ab556424f88f7b9e
+guid: 88560cb40cbf4b64994337a456639df8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 379379244860064370
-    second: Top_Down_Livingroom_0
+      213: 4905980395155079281
+    second: WG_Wall_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Top_Down_Livingroom_0
+      name: WG_Wall_0
       rect:
         serializedVersion: 2
-        x: 275
-        y: 0
-        width: 481
-        height: 405
+        x: 291
+        y: 205
+        width: 142
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2724a05c963d34500800000000000000
-      internalID: 379379244860064370
+      spriteID: 170cf382d2b851440800000000000000
+      internalID: 4905980395155079281
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Top_Down_Livingroom_0: 379379244860064370
+      WG_Wall_0: 4905980395155079281
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
