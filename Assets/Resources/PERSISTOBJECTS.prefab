@@ -982,6 +982,7 @@ MonoBehaviour:
   pausePanel: {fileID: 7359726551623934400}
   pauseMenuContainer: {fileID: 7753576094553907489}
   settingsPanel: {fileID: 5513366348714307512}
+  firstSceneName: Room_ApartmentBedroom
 --- !u!1 &1202848076799034976
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,6 +2561,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ae7026148033df4eaf28adadf3a2de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  firstSceneName: Room_ApartmentBedroom
+  firstSpawnPoint: FromLivingroom
 --- !u!1 &4190798828945830722
 GameObject:
   m_ObjectHideFlags: 0

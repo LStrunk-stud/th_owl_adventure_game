@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     private bool _pendingReset = false;
     public  bool PendingReset  => _pendingReset;
 
+    [Header("New Game Settings")]
+    [SerializeField] private string firstSceneName  = "Room_ApartmentBedroom";
+    [SerializeField] private string firstSpawnPoint = "SpawnStart";
+
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
@@ -39,7 +43,7 @@ public class GameManager : MonoBehaviour
     public void MarkBackpackUnlocked()
     {
         PlayerPrefs.SetInt(KEY_BACKPACK, 1);
-        PlayerPrefs.SetInt(KEY_HAS_SAVE, 1); // backpack counts as progress
+        PlayerPrefs.SetInt(KEY_HAS_SAVE, 1);
         PlayerPrefs.Save();
     }
 
@@ -51,7 +55,7 @@ public class GameManager : MonoBehaviour
     public void MarkSpokenTo(string npcID)
     {
         PlayerPrefs.SetInt(PREFIX_SPOKEN + npcID, 1);
-        PlayerPrefs.SetInt(KEY_HAS_SAVE, 1); // talking counts as progress
+        PlayerPrefs.SetInt(KEY_HAS_SAVE, 1);
         PlayerPrefs.Save();
     }
 
@@ -62,18 +66,20 @@ public class GameManager : MonoBehaviour
 
     // ── New Game ──────────────────────────────────────────────────────────────
 
-    public void StartNewGame(string firstSceneName = "Room_ApartmentBedroom")
+    public void StartNewGame(string sceneName = null, string spawnName = null)
     {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
 
         _pendingReset = true;
-
-        // Reset all persistent runtime state before loading
         InventoryManager.Instance.ResetInventory();
-
         Time.timeScale = 1f;
-        SceneManager.LoadScene(firstSceneName);
+
+        // Use SceneLoader so the player is placed at the correct SpawnPoint
+        SceneLoader.Instance.LoadRoom(
+            sceneName  ?? firstSceneName,
+            spawnName  ?? firstSpawnPoint
+        );
     }
 
     public void ClearPendingReset() => _pendingReset = false;
