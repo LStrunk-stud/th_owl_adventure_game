@@ -5,10 +5,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    private const string PREFIX_ITEM   = "item_collected_";
-    private const string PREFIX_SPOKEN = "npc_spoken_";
-    private const string KEY_BACKPACK  = "backpack_unlocked";
-    private const string KEY_HAS_SAVE  = "has_save";
+    private const string PREFIX_ITEM    = "item_collected_";
+    private const string PREFIX_SPOKEN  = "npc_spoken_";
+    private const string KEY_BACKPACK   = "backpack_unlocked";
+    private const string KEY_HAS_SAVE   = "has_save";
+    private const string KEY_LAST_SCENE = "last_scene";
+    private const string KEY_LAST_SPAWN = "last_spawn";
 
     private bool _pendingReset = false;
     public  bool PendingReset  => _pendingReset;
@@ -59,6 +61,23 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    // ── Last room ─────────────────────────────────────────────────────────────
+
+    /// Called by SceneLoader every time the player enters a room.
+    public void SaveLastRoom(string sceneName, string spawnName)
+    {
+        PlayerPrefs.SetString(KEY_LAST_SCENE, sceneName);
+        PlayerPrefs.SetString(KEY_LAST_SPAWN, spawnName);
+        PlayerPrefs.SetInt(KEY_HAS_SAVE, 1);
+        PlayerPrefs.Save();
+    }
+
+    public string GetLastScene()
+        => PlayerPrefs.GetString(KEY_LAST_SCENE, firstSceneName);
+
+    public string GetLastSpawn()
+        => PlayerPrefs.GetString(KEY_LAST_SPAWN, firstSpawnPoint);
+
     // ── Save state ────────────────────────────────────────────────────────────
 
     public bool HasSaveData()
@@ -75,7 +94,6 @@ public class GameManager : MonoBehaviour
         InventoryManager.Instance.ResetInventory();
         Time.timeScale = 1f;
 
-        // Use SceneLoader so the player is placed at the correct SpawnPoint
         SceneLoader.Instance.LoadRoom(
             sceneName  ?? firstSceneName,
             spawnName  ?? firstSpawnPoint

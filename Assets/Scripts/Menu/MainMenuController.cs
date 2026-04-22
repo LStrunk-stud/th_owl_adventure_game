@@ -11,27 +11,26 @@ public class MainMenuController : MonoBehaviour
     [Header("Buttons")]
     [SerializeField] private Button continueButton;
 
-    [Header("Scene")]
-    [SerializeField] private string firstSceneName = "Room_ApartmentBedroom";
-
     void Start()
     {
         if (continueButton != null)
             continueButton.gameObject.SetActive(GameManager.Instance.HasSaveData());
     }
 
-    // ── Button callbacks ──────────────────────────────────────────────────────
-
     public void StartNewGame()
     {
-        // Delegates to GameManager — sets PendingReset flag, resets inventory, loads scene
-        GameManager.Instance.StartNewGame(firstSceneName);
+        GameManager.Instance.StartNewGame();
     }
 
     public void ContinueGame()
     {
-        if (GameManager.Instance.HasSaveData())
-            SceneManager.LoadScene(firstSceneName);
+        if (!GameManager.Instance.HasSaveData()) return;
+
+        // Load the last room the player was in
+        SceneLoader.Instance.LoadRoom(
+            GameManager.Instance.GetLastScene(),
+            GameManager.Instance.GetLastSpawn()
+        );
     }
 
     public void OpenSettings()

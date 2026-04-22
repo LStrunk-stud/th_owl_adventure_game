@@ -14,21 +14,12 @@ public class SceneLoader : MonoBehaviour
         Instance = this;
     }
 
-    void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
+    void OnEnable()  => SceneManager.sceneLoaded += OnSceneLoaded;
+    void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         bool isGameplayScene = scene.name.StartsWith(gameplayPrefix);
-
-        Debug.Log("Scene Loaded: " + scene.name + " | Gameplay: " + isGameplayScene);
 
         if (gameplayCanvas != null)
             gameplayCanvas.SetActive(isGameplayScene);
@@ -42,6 +33,8 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadRoom(string sceneName, string spawnName)
     {
+        // Save last room so Continue knows where to resume
+        GameManager.Instance.SaveLastRoom(sceneName, spawnName);
         StartCoroutine(LoadRoutine(sceneName, spawnName));
     }
 
@@ -53,7 +46,6 @@ public class SceneLoader : MonoBehaviour
         yield return SceneManager.LoadSceneAsync(sceneName);
 
         var spawns = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None);
-
         foreach (var sp in spawns)
         {
             if (sp.spawnName == spawnName)
