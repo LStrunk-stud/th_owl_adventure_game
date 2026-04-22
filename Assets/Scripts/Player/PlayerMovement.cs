@@ -19,14 +19,13 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        rb = GetComponent<Rigidbody2D>(); 
-
+        rb = GetComponent<Rigidbody2D>();
         targetPos = transform.position;
     }
 
     void FixedUpdate()
     {
-        if (!canMove || !moving) return;
+        if (!moving) return;
 
         Vector2 newPos = Vector2.MoveTowards(
             rb.position,
@@ -45,8 +44,10 @@ public class PlayerMovement : MonoBehaviour
         walkArea = area;
     }
 
+    /// Normal movement — respects walkArea bounds.
     public bool MoveTo(Vector3 worldPos)
     {
+        if (!canMove) return false;
         if (!walkArea || !walkArea.OverlapPoint(worldPos)) return false;
 
         targetPos = new Vector3(worldPos.x, worldPos.y, transform.position.z);
@@ -54,8 +55,18 @@ public class PlayerMovement : MonoBehaviour
         return true;
     }
 
-    public bool IsMoving()
+    /// Forced movement — ignores walkArea. Used by transitions.
+    public void ForceMoveTo(Vector3 worldPos)
     {
-        return moving;
+        targetPos = new Vector3(worldPos.x, worldPos.y, transform.position.z);
+        moving = true;
+    }
+
+    public bool IsMoving() => moving;
+
+    public void StopMoving()
+    {
+        moving = false;
+        targetPos = transform.position;
     }
 }
