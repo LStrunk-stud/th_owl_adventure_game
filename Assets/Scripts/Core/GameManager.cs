@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     private const string KEY_BACKPACK  = "backpack_unlocked";
     private const string KEY_HAS_SAVE  = "has_save";
 
+    private bool _pendingReset = false;
+    public  bool PendingReset  => _pendingReset;
+
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
@@ -36,11 +39,11 @@ public class GameManager : MonoBehaviour
     public void MarkBackpackUnlocked()
     {
         PlayerPrefs.SetInt(KEY_BACKPACK, 1);
-        PlayerPrefs.SetInt(KEY_HAS_SAVE, 1);
+        PlayerPrefs.SetInt(KEY_HAS_SAVE, 1); // backpack counts as progress
         PlayerPrefs.Save();
     }
 
-    // ── NPC spoken state ──────────────────────────────────────────────────────
+    // ── NPC ───────────────────────────────────────────────────────────────────
 
     public bool HasSpokenTo(string npcID)
         => PlayerPrefs.GetInt(PREFIX_SPOKEN + npcID, 0) == 1;
@@ -48,27 +51,30 @@ public class GameManager : MonoBehaviour
     public void MarkSpokenTo(string npcID)
     {
         PlayerPrefs.SetInt(PREFIX_SPOKEN + npcID, 1);
+        PlayerPrefs.SetInt(KEY_HAS_SAVE, 1); // talking counts as progress
         PlayerPrefs.Save();
     }
 
     // ── Save state ────────────────────────────────────────────────────────────
 
-    /// True if the player has made any progress worth continuing.
     public bool HasSaveData()
         => PlayerPrefs.GetInt(KEY_HAS_SAVE, 0) == 1;
 
-    // ── New Game / Reset ──────────────────────────────────────────────────────
-
-    public void ResetGame()
-    {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
-    }
+    // ── New Game ──────────────────────────────────────────────────────────────
 
     public void StartNewGame(string firstSceneName = "Room_ApartmentBedroom")
     {
-        ResetGame();
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+
+        _pendingReset = true;
+
+        // Reset all persistent runtime state before loading
         InventoryManager.Instance.ResetInventory();
+
+        Time.timeScale = 1f;
         SceneManager.LoadScene(firstSceneName);
     }
+
+    public void ClearPendingReset() => _pendingReset = false;
 }

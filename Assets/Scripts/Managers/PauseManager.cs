@@ -8,12 +8,12 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenuContainer;
     [SerializeField] private GameObject settingsPanel;
 
+    [Header("Scene")]
+    [SerializeField] private string firstSceneName = "Room_ApartmentBedroom";
+
     private bool isPaused;
 
-    void Awake()
-    {
-        ResumeGame();
-    }
+    void Awake() => ResumeGame();
 
     void Update()
     {
@@ -24,54 +24,63 @@ public class PauseManager : MonoBehaviour
         }
     }
 
+    // ── Pause / Resume ────────────────────────────────────────────────────────
+
     public void PauseGame()
     {
         isPaused = true;
         Time.timeScale = 0f;
-        if (pausePanel)          pausePanel.SetActive(true);
-        if (pauseMenuContainer)  pauseMenuContainer.SetActive(true);
-        if (settingsPanel)       settingsPanel.SetActive(false);
+        if (pausePanel)         pausePanel.SetActive(true);
+        if (pauseMenuContainer) pauseMenuContainer.SetActive(true);
+        if (settingsPanel)      settingsPanel.SetActive(false);
     }
 
     public void ResumeGame()
     {
         isPaused = false;
         Time.timeScale = 1f;
-        if (pausePanel)          pausePanel.SetActive(false);
-        if (settingsPanel)       settingsPanel.SetActive(false);
-        if (pauseMenuContainer)  pauseMenuContainer.SetActive(true);
+        if (pausePanel)         pausePanel.SetActive(false);
+        if (settingsPanel)      settingsPanel.SetActive(false);
+        if (pauseMenuContainer) pauseMenuContainer.SetActive(true);
     }
 
-    /// Wipes save data and restarts from the beginning — for exhibition use.
+    // ── Buttons ───────────────────────────────────────────────────────────────
+
     public void StartNewGame()
     {
+        // Reset time scale before loading
         Time.timeScale = 1f;
         isPaused = false;
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
-        SceneManager.LoadScene("Room_ApartmentBedroom");
+
+        // Hide all panels immediately
+        if (pausePanel)         pausePanel.SetActive(false);
+        if (pauseMenuContainer) pauseMenuContainer.SetActive(false);
+        if (settingsPanel)      settingsPanel.SetActive(false);
+
+        // GameManager handles PlayerPrefs reset + InventoryManager reset + scene load
+        GameManager.Instance.StartNewGame(firstSceneName);
     }
 
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
         isPaused = false;
-        if (pausePanel)          pausePanel.SetActive(false);
-        if (pauseMenuContainer)  pauseMenuContainer.SetActive(false);
-        if (settingsPanel)       settingsPanel.SetActive(false);
+        if (pausePanel)         pausePanel.SetActive(false);
+        if (pauseMenuContainer) pauseMenuContainer.SetActive(false);
+        if (settingsPanel)      settingsPanel.SetActive(false);
         SceneManager.LoadScene("MainMenu");
     }
 
     public void OpenSettings()
     {
-        if (pauseMenuContainer)  pauseMenuContainer.SetActive(false);
-        if (settingsPanel)       settingsPanel.SetActive(true);
+        if (pauseMenuContainer) pauseMenuContainer.SetActive(false);
+        if (settingsPanel)      settingsPanel.SetActive(true);
     }
 
     public void CloseSettings()
     {
-        if (settingsPanel)       settingsPanel.SetActive(false);
-        if (pauseMenuContainer)  pauseMenuContainer.SetActive(true);
+        if (settingsPanel)      settingsPanel.SetActive(false);
+        if (pauseMenuContainer) pauseMenuContainer.SetActive(true);
     }
 
     public void QuitGame()

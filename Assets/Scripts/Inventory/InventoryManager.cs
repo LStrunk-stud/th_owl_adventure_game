@@ -8,6 +8,7 @@ public class InventoryManager : MonoBehaviour
 
     public event Action OnInventoryChanged;
     public event Action OnBackpackUnlocked;
+    public event Action OnInventoryReset;   // NEW: UI listens to fully reset itself
 
     private readonly List<ItemData> _items = new();
     private bool _backpackUnlocked = false;
@@ -18,9 +19,13 @@ public class InventoryManager : MonoBehaviour
         Instance = this;
     }
 
-    // Called after all Awake() — GameManager.Instance is guaranteed to exist here
     void Start()
     {
+        if (GameManager.Instance.PendingReset)
+        {
+            GameManager.Instance.ClearPendingReset();
+            return;
+        }
         RestoreFromSave();
     }
 
@@ -62,34 +67,30 @@ public class InventoryManager : MonoBehaviour
 
     public bool HasItem(ItemData item) => _items.Contains(item);
 
+    /// Wipes runtime state and notifies UI to fully reset.
     public void ResetInventory()
     {
         _items.Clear();
         _backpackUnlocked = false;
-        OnInventoryChanged?.Invoke();
+        OnInventoryReset?.Invoke();   // UI uses this to hide everything
     }
 
     // ── Save / Restore ────────────────────────────────────────────────────────
 
     private void RestoreFromSave()
     {
-        // Restore backpack state
         if (GameManager.Instance.IsBackpackUnlocked())
         {
             _backpackUnlocked = true;
-            // Fire event so InventoryUI shows the toggle button
             OnBackpackUnlocked?.Invoke();
         }
 
-        // Restore collected items — find all ItemData assets and check if collected
         var allItems = Resources.LoadAll<ItemData>("Items");
         foreach (var item in allItems)
         {
             if (item.isBackpack) continue;
             if (GameManager.Instance.IsItemCollected(item.itemID))
-            {
                 _items.Add(item);
-            }
         }
 
         if (_items.Count > 0)

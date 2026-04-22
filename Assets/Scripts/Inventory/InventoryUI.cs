@@ -14,25 +14,13 @@ public class InventoryUI : MonoBehaviour
 
     void Start()
     {
-        inventoryPanel.SetActive(false);
-        toggleButton.gameObject.SetActive(false);
-        toggleButton.onClick.AddListener(TogglePanel);
-
+        // Subscribe to all events
         InventoryManager.Instance.OnBackpackUnlocked += HandleBackpackUnlocked;
         InventoryManager.Instance.OnInventoryChanged  += RebuildSlots;
+        InventoryManager.Instance.OnInventoryReset    += HandleReset;
 
-        // Restore state if backpack was already unlocked in a previous session
-        // InventoryManager.Start() fires OnBackpackUnlocked before InventoryUI.Start()
-        // only if execution order guarantees it — so we check directly as fallback
-        if (InventoryManager.Instance.BackpackUnlocked && !_unlocked)
-        {
-            _unlocked = true;
-            toggleButton.gameObject.SetActive(true);
-            // Don't auto-open panel on restore — just show the button
-        }
-
-        // Rebuild slots for any items already in the inventory from save
-        RebuildSlots();
+        // Apply initial state — covers scene reloads and session restores
+        ApplyCurrentState();
     }
 
     void OnDestroy()
@@ -40,6 +28,7 @@ public class InventoryUI : MonoBehaviour
         if (InventoryManager.Instance == null) return;
         InventoryManager.Instance.OnBackpackUnlocked -= HandleBackpackUnlocked;
         InventoryManager.Instance.OnInventoryChanged  -= RebuildSlots;
+        InventoryManager.Instance.OnInventoryReset    -= HandleReset;
     }
 
     // ── Event Handlers ────────────────────────────────────────────────────────
@@ -51,11 +40,19 @@ public class InventoryUI : MonoBehaviour
         SetPanelVisible(true);
     }
 
+    private void HandleReset()
+    {
+        // Fully hide and lock the UI — called when a new game starts
+        _unlocked = false;
+        _panelVisible = false;
+        toggleButton.gameObject.SetActive(false);
+        inventoryPanel.SetActive(false);
+        ClearSlots();
+    }
+
     private void RebuildSlots()
     {
-        foreach (Transform child in slotContainer)
-            Destroy(child.gameObject);
-
+        ClearSlots();
         foreach (var item in InventoryManager.Instance.GetItems())
         {
             var slotGO = Instantiate(slotPrefab, slotContainer);
@@ -63,7 +60,27 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    // ── Toggle ────────────────────────────────────────────────────────────────
+    // ── Helpers ───────────────────────────────────────────────────────────────
+
+    /// Syncs UI to current InventoryManager state.
+    /// Needed on Start() since events may have fired before this UI subscribed.
+    private void ApplyCurrentState()
+    {
+        if (InventoryManager.Instance.BackpackUnlocked)
+        {
+            _unlocked = true;
+            toggleButton.gameObject.SetActive(true);
+            // Don't auto-open panel on restore — player may have closed it
+        }
+        else
+        {
+            _unlocked = false;
+            toggleButton.gameObject.SetActive(false);
+            inventoryPanel.SetActive(false);
+        }
+
+        RebuildSlots();
+    }
 
     private void TogglePanel()
     {
@@ -75,5 +92,30 @@ public class InventoryUI : MonoBehaviour
     {
         _panelVisible = visible;
         inventoryPanel.SetActive(visible);
+    }
+
+    private void ClearSlots()
+    {
+        foreach (Transform child in slotContainer)
+            Destroy(child.gameObject);
+    }
+
+    // toggleButton.onClick listener must be added after Start
+    void Awake()
+    {
+        // Delay listener setup to Start so toggleButton is guaranteed assigned
+    }
+
+    // Add listener here since we need it after serialized fields are ready
+    void OnEnable()
+    {
+        if (toggleButton != null)
+            toggleButton.onClick.AddListener(TogglePanel);
+    }
+
+    void OnDisable()
+    {
+        if (toggleButton != null)
+            toggleButton.onClick.RemoveListener(TogglePanel);
     }
 }

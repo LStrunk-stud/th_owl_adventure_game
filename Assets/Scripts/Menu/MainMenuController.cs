@@ -16,23 +16,21 @@ public class MainMenuController : MonoBehaviour
 
     void Start()
     {
-        // Show "Continue" only if a save exists
         if (continueButton != null)
-            continueButton.gameObject.SetActive(HasSave());
+            continueButton.gameObject.SetActive(GameManager.Instance.HasSaveData());
     }
 
     // ── Button callbacks ──────────────────────────────────────────────────────
 
     public void StartNewGame()
     {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
-        SceneManager.LoadScene(firstSceneName);
+        // Delegates to GameManager — sets PendingReset flag, resets inventory, loads scene
+        GameManager.Instance.StartNewGame(firstSceneName);
     }
 
     public void ContinueGame()
     {
-        if (HasSave())
+        if (GameManager.Instance.HasSaveData())
             SceneManager.LoadScene(firstSceneName);
     }
 
@@ -52,9 +50,4 @@ public class MainMenuController : MonoBehaviour
     {
         Application.Quit();
     }
-
-    // ── Helpers ───────────────────────────────────────────────────────────────
-
-    private bool HasSave()
-        => PlayerPrefs.GetInt("has_save", 0) == 1;
 }
