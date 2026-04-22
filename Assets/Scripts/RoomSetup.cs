@@ -3,7 +3,10 @@ using UnityEngine;
 public class RoomSetup : MonoBehaviour
 {
     [SerializeField] private PolygonCollider2D walkArea;
-    [SerializeField] private SpawnPoint defaultSpawnPoint;
+    [SerializeField] private SpawnPoint        defaultSpawnPoint;
+
+    [Tooltip("BoxCollider2D defining camera movement area. Size = room size in Units.")]
+    [SerializeField] private BoxCollider2D cameraBoundsCollider;
 
     void Awake()
     {
@@ -13,18 +16,30 @@ public class RoomSetup : MonoBehaviour
 
     void Start()
     {
-        if (PlayerMovement.Instance == null) return;
-
-        // PERSISTOBJECTS not loaded = direct scene start in editor
-        // Enable movement and place player at default spawn
-        bool persistObjectsLoaded = SceneTransition.Instance != null;
-        if (!persistObjectsLoaded)
+        // Set camera bounds
+        if (CameraFollow.Instance != null)
         {
-            PlayerMovement.Instance.canMove = true;
+            if (cameraBoundsCollider != null)
+            {
+                CameraFollow.Instance.SetRoomBounds(cameraBoundsCollider.bounds);
+                cameraBoundsCollider.enabled = false;
+            }
+            else
+            {
+                CameraFollow.Instance.ClearBounds();
+            }
+            CameraFollow.Instance.SnapToTarget();
+        }
 
-            if (defaultSpawnPoint != null)
-                PlayerMovement.Instance.transform.position =
-                    defaultSpawnPoint.transform.position;
+        // Direct play in editor — PERSISTOBJECTS not loaded
+        if (SceneTransition.Instance == null)
+        {
+            if (PlayerMovement.Instance != null)
+            {
+                PlayerMovement.Instance.canMove = true;
+                if (defaultSpawnPoint != null)
+                    PlayerMovement.Instance.transform.position = defaultSpawnPoint.transform.position;
+            }
         }
     }
 }
