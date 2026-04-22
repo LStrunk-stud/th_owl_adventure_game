@@ -2112,7 +2112,6 @@ MonoBehaviour:
   mainMenuPanel: {fileID: 686511354}
   settingsPanel: {fileID: 1405925933}
   continueButton: {fileID: 1634208411}
-  firstSceneName: Room_ApartmentBedroom
 --- !u!1 &1106780313
 GameObject:
   m_ObjectHideFlags: 0
@@ -2250,14 +2249,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0.58571386, b: 1, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4980393042394730227, guid: dfb285f516a8dbe4688363e300976bff, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4323,8 +4322,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 16, y: -131}
-  m_SizeDelta: {x: 700.0707, y: 220.48828}
+  m_AnchoredPosition: {x: 0, y: -78.489}
+  m_SizeDelta: {x: 366.6141, y: 115.4656}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1835835127
 MonoBehaviour:

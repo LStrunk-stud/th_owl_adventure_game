@@ -9,6 +9,8 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private string     gameplayPrefix = "Room";
     [SerializeField] private GameObject gameplayCanvas;
 
+    private bool _loadingViaRoutine = false;
+
     void Awake() => Instance = this;
 
     void OnEnable()  => SceneManager.sceneLoaded += OnSceneLoaded;
@@ -24,16 +26,10 @@ public class SceneLoader : MonoBehaviour
         if (PlayerMovement.Instance != null)
         {
             PlayerMovement.Instance.gameObject.SetActive(isGameplay);
-
-            // Only block movement here — LoadRoutine re-enables it after fade-in.
-            // canMove stays true if scene was loaded directly (not via LoadRoom).
             if (isGameplay && _loadingViaRoutine)
                 PlayerMovement.Instance.canMove = false;
         }
     }
-
-    // Flag so OnSceneLoaded knows if load came from LoadRoom or direct start
-    private bool _loadingViaRoutine = false;
 
     public void LoadRoom(string sceneName, string spawnName)
     {
@@ -50,8 +46,7 @@ public class SceneLoader : MonoBehaviour
         _loadingViaRoutine = false;
 
         // Place player at spawn
-        var spawns = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None);
-        foreach (var sp in spawns)
+        foreach (var sp in FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None))
         {
             if (sp.spawnName == spawnName)
             {
@@ -61,13 +56,16 @@ public class SceneLoader : MonoBehaviour
             }
         }
 
+        // Snap camera before fade-in so there's no camera pop
+        if (CameraFollow.Instance != null)
+            CameraFollow.Instance?.SnapToTarget();
+
         // Fade in then enable movement
         yield return StartCoroutine(SceneTransition.Instance.FadeIn());
 
         if (PlayerMovement.Instance != null)
             PlayerMovement.Instance.canMove = true;
 
-        // Reset transition hotspots
         foreach (var h in FindObjectsByType<TransitionHotspot>(FindObjectsSortMode.None))
             h.ResetTrigger();
     }
