@@ -1,30 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/// Attached to the InventoryUI root in the GameplayCanvas.
-/// Starts hidden, unlocks when the backpack is picked up,
-/// and rebuilds the slot list whenever the inventory changes.
 public class InventoryUI : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private GameObject inventoryPanel;   // The foldable slot bar
-    [SerializeField] private Button toggleButton;         // The backpack icon button
-    [SerializeField] private Transform slotContainer;     // Layout group holding slots
-    [SerializeField] private GameObject slotPrefab;       // InventorySlot prefab
+    [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private Button     toggleButton;
+    [SerializeField] private Transform  slotContainer;
+    [SerializeField] private GameObject slotPrefab;
 
     private bool _panelVisible = false;
-    private bool _unlocked = false;
+    private bool _unlocked     = false;
 
     void Start()
     {
-        // Hide everything until backpack is picked up
-        inventoryPanel.SetActive(false);
-        toggleButton.gameObject.SetActive(false);
-
-        toggleButton.onClick.AddListener(TogglePanel);
-
+        // Subscribe to all events
         InventoryManager.Instance.OnBackpackUnlocked += HandleBackpackUnlocked;
         InventoryManager.Instance.OnInventoryChanged  += RebuildSlots;
+        InventoryManager.Instance.OnInventoryReset    += HandleReset;
+
+        // Apply initial state — covers scene reloads and session restores
+        ApplyCurrentState();
     }
 
     void OnDestroy()
@@ -32,6 +28,7 @@ public class InventoryUI : MonoBehaviour
         if (InventoryManager.Instance == null) return;
         InventoryManager.Instance.OnBackpackUnlocked -= HandleBackpackUnlocked;
         InventoryManager.Instance.OnInventoryChanged  -= RebuildSlots;
+        InventoryManager.Instance.OnInventoryReset    -= HandleReset;
     }
 
     // ── Event Handlers ────────────────────────────────────────────────────────
@@ -40,17 +37,22 @@ public class InventoryUI : MonoBehaviour
     {
         _unlocked = true;
         toggleButton.gameObject.SetActive(true);
-        // Open the panel immediately so the player notices it
         SetPanelVisible(true);
+    }
+
+    private void HandleReset()
+    {
+        // Fully hide and lock the UI — called when a new game starts
+        _unlocked = false;
+        _panelVisible = false;
+        toggleButton.gameObject.SetActive(false);
+        inventoryPanel.SetActive(false);
+        ClearSlots();
     }
 
     private void RebuildSlots()
     {
-        // Clear existing slots
-        foreach (Transform child in slotContainer)
-            Destroy(child.gameObject);
-
-        // Create one slot per item
+        ClearSlots();
         foreach (var item in InventoryManager.Instance.GetItems())
         {
             var slotGO = Instantiate(slotPrefab, slotContainer);
@@ -58,7 +60,27 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    // ── Toggle ────────────────────────────────────────────────────────────────
+    // ── Helpers ───────────────────────────────────────────────────────────────
+
+    /// Syncs UI to current InventoryManager state.
+    /// Needed on Start() since events may have fired before this UI subscribed.
+    private void ApplyCurrentState()
+    {
+        if (InventoryManager.Instance.BackpackUnlocked)
+        {
+            _unlocked = true;
+            toggleButton.gameObject.SetActive(true);
+            // Don't auto-open panel on restore — player may have closed it
+        }
+        else
+        {
+            _unlocked = false;
+            toggleButton.gameObject.SetActive(false);
+            inventoryPanel.SetActive(false);
+        }
+
+        RebuildSlots();
+    }
 
     private void TogglePanel()
     {
@@ -70,5 +92,30 @@ public class InventoryUI : MonoBehaviour
     {
         _panelVisible = visible;
         inventoryPanel.SetActive(visible);
+    }
+
+    private void ClearSlots()
+    {
+        foreach (Transform child in slotContainer)
+            Destroy(child.gameObject);
+    }
+
+    // toggleButton.onClick listener must be added after Start
+    void Awake()
+    {
+        // Delay listener setup to Start so toggleButton is guaranteed assigned
+    }
+
+    // Add listener here since we need it after serialized fields are ready
+    void OnEnable()
+    {
+        if (toggleButton != null)
+            toggleButton.onClick.AddListener(TogglePanel);
+    }
+
+    void OnDisable()
+    {
+        if (toggleButton != null)
+            toggleButton.onClick.RemoveListener(TogglePanel);
     }
 }

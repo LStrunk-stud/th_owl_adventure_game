@@ -6,33 +6,34 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance { get; private set; }
 
-    // Fired whenever the item list changes — UI listens to this
     public event Action OnInventoryChanged;
-
-    // Fired once when the backpack is picked up — UI listens to unlock itself
     public event Action OnBackpackUnlocked;
+    public event Action OnInventoryReset;   // NEW: UI listens to fully reset itself
 
     private readonly List<ItemData> _items = new();
     private bool _backpackUnlocked = false;
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        Instance = this;
+    }
+
+    void Start()
+    {
+        if (GameManager.Instance.PendingReset)
         {
-            Destroy(gameObject);
+            GameManager.Instance.ClearPendingReset();
             return;
         }
-        Instance = this;
+        RestoreFromSave();
     }
 
     // ── Public API ────────────────────────────────────────────────────────────
 
     public bool BackpackUnlocked => _backpackUnlocked;
-
-    /// Returns a read-only snapshot of the current items.
     public IReadOnlyList<ItemData> GetItems() => _items.AsReadOnly();
 
-    /// Adds an item. If it is the backpack, unlocks the inventory instead.
     public void AddItem(ItemData item)
     {
         if (item == null) return;
@@ -41,21 +42,23 @@ public class InventoryManager : MonoBehaviour
         {
             if (_backpackUnlocked) return;
             _backpackUnlocked = true;
+            GameManager.Instance.MarkBackpackUnlocked();
+            GameManager.Instance.MarkItemCollected(item.itemID);
             OnBackpackUnlocked?.Invoke();
             return;
         }
 
         if (!_backpackUnlocked)
         {
-            Debug.LogWarning($"[InventoryManager] Cannot pick up '{item.itemName}' — backpack not unlocked yet.");
+            Debug.LogWarning($"[InventoryManager] Cannot pick up '{item.itemName}' — backpack not unlocked.");
             return;
         }
 
         _items.Add(item);
+        GameManager.Instance.MarkItemCollected(item.itemID);
         OnInventoryChanged?.Invoke();
     }
 
-    /// Removes an item (e.g. after using it).
     public void RemoveItem(ItemData item)
     {
         if (_items.Remove(item))
@@ -63,4 +66,34 @@ public class InventoryManager : MonoBehaviour
     }
 
     public bool HasItem(ItemData item) => _items.Contains(item);
+
+    /// Wipes runtime state and notifies UI to fully reset.
+    public void ResetInventory()
+    {
+        _items.Clear();
+        _backpackUnlocked = false;
+        OnInventoryReset?.Invoke();   // UI uses this to hide everything
+    }
+
+    // ── Save / Restore ────────────────────────────────────────────────────────
+
+    private void RestoreFromSave()
+    {
+        if (GameManager.Instance.IsBackpackUnlocked())
+        {
+            _backpackUnlocked = true;
+            OnBackpackUnlocked?.Invoke();
+        }
+
+        var allItems = Resources.LoadAll<ItemData>("Items");
+        foreach (var item in allItems)
+        {
+            if (item.isBackpack) continue;
+            if (GameManager.Instance.IsItemCollected(item.itemID))
+                _items.Add(item);
+        }
+
+        if (_items.Count > 0)
+            OnInventoryChanged?.Invoke();
+    }
 }
