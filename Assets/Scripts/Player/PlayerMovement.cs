@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private PolygonCollider2D walkArea;
     private Rigidbody2D rb;
 
+    // Default true — SceneLoader sets it to false during transitions
     public bool canMove = true;
 
     private Vector3 targetPos;
@@ -55,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         return true;
     }
 
-    /// Forced movement — ignores walkArea. Used by transitions.
+    /// Forced movement — ignores walkArea and canMove. Used by transitions.
     public void ForceMoveTo(Vector3 worldPos)
     {
         targetPos = new Vector3(worldPos.x, worldPos.y, transform.position.z);

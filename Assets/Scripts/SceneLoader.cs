@@ -24,9 +24,16 @@ public class SceneLoader : MonoBehaviour
         if (PlayerMovement.Instance != null)
         {
             PlayerMovement.Instance.gameObject.SetActive(isGameplay);
-            PlayerMovement.Instance.canMove = false; // held until fade-in completes
+
+            // Only block movement here — LoadRoutine re-enables it after fade-in.
+            // canMove stays true if scene was loaded directly (not via LoadRoom).
+            if (isGameplay && _loadingViaRoutine)
+                PlayerMovement.Instance.canMove = false;
         }
     }
+
+    // Flag so OnSceneLoaded knows if load came from LoadRoom or direct start
+    private bool _loadingViaRoutine = false;
 
     public void LoadRoom(string sceneName, string spawnName)
     {
@@ -36,13 +43,13 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator LoadRoutine(string sceneName, string spawnName)
     {
-        // Screen is already black from TransitionHotspot fade-out
-        // (or instant black if called directly e.g. from GameManager.StartNewGame)
-        SceneTransition.Instance.SetAlpha(1f);
+        _loadingViaRoutine = true;
 
         yield return SceneManager.LoadSceneAsync(sceneName);
 
-        // Place player at spawn point
+        _loadingViaRoutine = false;
+
+        // Place player at spawn
         var spawns = FindObjectsByType<SpawnPoint>(FindObjectsSortMode.None);
         foreach (var sp in spawns)
         {
@@ -54,15 +61,14 @@ public class SceneLoader : MonoBehaviour
             }
         }
 
-        // Fade back in, then allow movement
+        // Fade in then enable movement
         yield return StartCoroutine(SceneTransition.Instance.FadeIn());
 
         if (PlayerMovement.Instance != null)
             PlayerMovement.Instance.canMove = true;
 
-        // Reset transition hotspots in the new scene
-        var hotspots = FindObjectsByType<TransitionHotspot>(FindObjectsSortMode.None);
-        foreach (var h in hotspots)
+        // Reset transition hotspots
+        foreach (var h in FindObjectsByType<TransitionHotspot>(FindObjectsSortMode.None))
             h.ResetTrigger();
     }
 }
