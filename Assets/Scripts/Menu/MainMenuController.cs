@@ -1,15 +1,39 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
+    [Header("Panels")]
     public GameObject mainMenuPanel;
     public GameObject settingsPanel;
-    [SerializeField] private int sceneIndex;
 
-    public void StartGame()
+    [Header("Buttons")]
+    [SerializeField] private Button continueButton;
+
+    [Header("Scene")]
+    [SerializeField] private string firstSceneName = "Room_ApartmentBedroom";
+
+    void Start()
     {
-        SceneManager.LoadScene(sceneIndex);
+        // Show "Continue" only if a save exists
+        if (continueButton != null)
+            continueButton.gameObject.SetActive(HasSave());
+    }
+
+    // ── Button callbacks ──────────────────────────────────────────────────────
+
+    public void StartNewGame()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(firstSceneName);
+    }
+
+    public void ContinueGame()
+    {
+        if (HasSave())
+            SceneManager.LoadScene(firstSceneName);
     }
 
     public void OpenSettings()
@@ -28,4 +52,9 @@ public class MainMenuController : MonoBehaviour
     {
         Application.Quit();
     }
+
+    // ── Helpers ───────────────────────────────────────────────────────────────
+
+    private bool HasSave()
+        => PlayerPrefs.GetInt("has_save", 0) == 1;
 }

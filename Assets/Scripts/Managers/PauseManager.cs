@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
-
     [Header("Panels")]
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject pauseMenuContainer;
@@ -29,48 +28,54 @@ public class PauseManager : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0f;
-
-        if (pausePanel) pausePanel.SetActive(true);
-        if (pauseMenuContainer) pauseMenuContainer.SetActive(true);
-        if (settingsPanel) settingsPanel.SetActive(false);
+        if (pausePanel)          pausePanel.SetActive(true);
+        if (pauseMenuContainer)  pauseMenuContainer.SetActive(true);
+        if (settingsPanel)       settingsPanel.SetActive(false);
     }
 
     public void ResumeGame()
     {
         isPaused = false;
         Time.timeScale = 1f;
-
-        if (pausePanel) pausePanel.SetActive(false);
-        if (settingsPanel) settingsPanel.SetActive(false);
-        if (pauseMenuContainer) pauseMenuContainer.SetActive(true);
+        if (pausePanel)          pausePanel.SetActive(false);
+        if (settingsPanel)       settingsPanel.SetActive(false);
+        if (pauseMenuContainer)  pauseMenuContainer.SetActive(true);
     }
 
-    public void QuitGame()
+    /// Wipes save data and restarts from the beginning — for exhibition use.
+    public void StartNewGame()
     {
-        Application.Quit();
+        Time.timeScale = 1f;
+        isPaused = false;
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("Room_ApartmentBedroom");
     }
 
     public void GoToMainMenu()
     {
         Time.timeScale = 1f;
         isPaused = false;
-
-        if (pausePanel) pausePanel.SetActive(false);
-        if (pauseMenuContainer)pauseMenuContainer.SetActive(false);
-        if (settingsPanel) settingsPanel.SetActive(false);
-
+        if (pausePanel)          pausePanel.SetActive(false);
+        if (pauseMenuContainer)  pauseMenuContainer.SetActive(false);
+        if (settingsPanel)       settingsPanel.SetActive(false);
         SceneManager.LoadScene("MainMenu");
     }
 
     public void OpenSettings()
     {
-        if (pauseMenuContainer) pauseMenuContainer.SetActive(false);
-        if (settingsPanel) settingsPanel.SetActive(true);
+        if (pauseMenuContainer)  pauseMenuContainer.SetActive(false);
+        if (settingsPanel)       settingsPanel.SetActive(true);
     }
 
     public void CloseSettings()
     {
-        if (settingsPanel) settingsPanel.SetActive(false);
-        if (pauseMenuContainer) pauseMenuContainer.SetActive(true);
+        if (settingsPanel)       settingsPanel.SetActive(false);
+        if (pauseMenuContainer)  pauseMenuContainer.SetActive(true);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

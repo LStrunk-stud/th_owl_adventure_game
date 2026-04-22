@@ -11,7 +11,7 @@ public class PickupHotspot : MonoBehaviour
         if (item == null) return;
 
         // Hide if already collected (scene reload or returning from another scene)
-        if (GameStateManager.Instance.IsItemCollected(item.itemID))
+        if (GameManager.Instance.IsItemCollected(item.itemID))
         {
             gameObject.SetActive(false);
         }

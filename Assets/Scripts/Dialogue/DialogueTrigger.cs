@@ -24,7 +24,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         // Restore spoken state from save
         if (!string.IsNullOrEmpty(npcID))
-            _hasSpoken = GameStateManager.Instance.HasSpokenTo(npcID);
+            _hasSpoken = GameManager.Instance.HasSpokenTo(npcID);
     }
 
     public void StartDialogue()
@@ -37,7 +37,7 @@ public class DialogueTrigger : MonoBehaviour
         {
             _hasSpoken = true;
             if (!string.IsNullOrEmpty(npcID))
-                GameStateManager.Instance.MarkSpokenTo(npcID);
+                GameManager.Instance.MarkSpokenTo(npcID);
 
             if (greetingDialogue != null)
             {
