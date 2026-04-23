@@ -128,7 +128,19 @@ MonoBehaviour:
   interactLabel: 
   OnInteract:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3959479670939291303}
+        m_TargetAssemblyTypeName: OpenableObject, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6728823836603348835
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,6 +151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7667228409925508418}
   - component: {fileID: 7528280643741279832}
+  - component: {fileID: 3959479670939291303}
   m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
@@ -219,6 +232,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3959479670939291303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6728823836603348835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 813fd8f30bb705e4c8ab35eb39e5dec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OpenableObject
+  spriteRenderer: {fileID: 0}
+  closedSprite: {fileID: 0}
+  openSprite: {fileID: 0}
+  startOpen: 0
+  OnOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSearched:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8539729661148351188
 GameObject:
   m_ObjectHideFlags: 0
