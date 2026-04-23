@@ -42,14 +42,16 @@ public class ClickController : MonoBehaviour
             }
 
             // No item held: check all hotspot types
+            // InteractHotspot before PickupHotspot — objects like chests have both
+            // and should trigger Interact (open) not Pickup (loot) on direct click
             var npc = hit.collider.GetComponent<NpcHotspot>();
             if (npc != null) { npc.Interact(); return; }
 
-            var pickup = hit.collider.GetComponent<PickupHotspot>();
-            if (pickup != null) { pickup.Pickup(); return; }
-
             var interact = hit.collider.GetComponent<InteractHotspot>();
             if (interact != null) { interact.Interact(); return; }
+
+            var pickup = hit.collider.GetComponent<PickupHotspot>();
+            if (pickup != null) { pickup.Pickup(); return; }
 
             var transition = hit.collider.GetComponent<TransitionHotspot>();
             if (transition != null) { transition.Activate(); return; }

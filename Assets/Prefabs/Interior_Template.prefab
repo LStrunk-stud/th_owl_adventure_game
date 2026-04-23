@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 718682666276419154}
   - component: {fileID: 771098528676582911}
   - component: {fileID: 257296861261491303}
+  - component: {fileID: 5579854032184595960}
   m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
@@ -141,6 +142,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5579854032184595960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3652346930546916276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b25b0d6e37a3fc4a9339a3fae423209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupHotspot
+  item: {fileID: 0}
+  pickupDialogue: {fileID: 0}
+  isEmbedded: 1
 --- !u!1 &6728823836603348835
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,6 +263,9 @@ MonoBehaviour:
   spriteRenderer: {fileID: 0}
   closedSprite: {fileID: 0}
   openSprite: {fileID: 0}
+  lootPickup: {fileID: 0}
+  openDialogue: {fileID: 0}
+  searchedDialogue: {fileID: 0}
   startOpen: 0
   OnOpened:
     m_PersistentCalls:

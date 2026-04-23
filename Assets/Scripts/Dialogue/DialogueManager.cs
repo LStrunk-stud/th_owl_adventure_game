@@ -90,6 +90,15 @@ public class DialogueManager : MonoBehaviour
             ReturnToMainOptions();
     }
 
+    /// Plays a dialogue anchored to the player — for item pickups and object inspections.
+    /// No trigger needed, no main options loop.
+    public void PlaySimpleDialogue(DialogueData data)
+    {
+        if (data == null) return;
+        if (PlayerMovement.Instance == null) return;
+        PlayDialogue(data, PlayerMovement.Instance.transform, null);
+    }
+
     public void EndDialogue()
     {
         IsPlaying = false;
