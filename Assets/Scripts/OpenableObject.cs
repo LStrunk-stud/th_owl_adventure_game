@@ -3,6 +3,10 @@ using UnityEngine.Events;
 
 public class OpenableObject : MonoBehaviour
 {
+    [Header("Identity")]
+    [Tooltip("Unique ID for save state. Must be unique across all scenes. E.g. 'Bedroom_Chest_01'")]
+    [SerializeField] private string objectID;
+
     [Header("Sprites")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite         closedSprite;
@@ -12,13 +16,8 @@ public class OpenableObject : MonoBehaviour
     [SerializeField] private PickupHotspot lootPickup;
 
     [Header("Dialogue")]
-    [Tooltip("Plays when opened.")]
     [SerializeField] private DialogueData openDialogue;
-
-    [Tooltip("Plays after open dialogue when loot is picked up.")]
     [SerializeField] private DialogueData lootDialogue;
-
-    [Tooltip("Plays when searched again after looting.")]
     [SerializeField] private DialogueData searchedDialogue;
 
     [Header("State")]
@@ -32,7 +31,22 @@ public class OpenableObject : MonoBehaviour
 
     void Start()
     {
-        _isOpen = startOpen;
+        // Restore state from save
+        if (!string.IsNullOrEmpty(objectID))
+        {
+            _isOpen   = GameManager.Instance.IsObjectOpen(objectID);
+            _isLooted = GameManager.Instance.IsObjectLooted(objectID);
+        }
+        else
+        {
+            _isOpen = startOpen;
+            Debug.LogWarning($"[OpenableObject] '{gameObject.name}' has no objectID — state won't be saved!");
+        }
+
+        // Disable loot pickup if already looted
+        if (_isLooted && lootPickup != null)
+            lootPickup.gameObject.SetActive(false);
+
         UpdateSprite();
     }
 
@@ -43,17 +57,22 @@ public class OpenableObject : MonoBehaviour
             _isOpen = true;
             UpdateSprite();
 
-            // Give loot immediately
+            // Save open state
+            if (!string.IsNullOrEmpty(objectID))
+                GameManager.Instance.MarkObjectOpen(objectID);
+
+            // Give loot immediately and save looted state
             if (lootPickup != null && !_isLooted)
             {
                 _isLooted = true;
+                if (!string.IsNullOrEmpty(objectID))
+                    GameManager.Instance.MarkObjectLooted(objectID);
                 lootPickup.Pickup();
             }
 
             // Open dialogue first, loot dialogue queues after
             if (openDialogue != null)
                 DialogueManager.Instance.PlaySimpleDialogue(openDialogue);
-
             if (lootDialogue != null)
                 DialogueManager.Instance.QueueDialogue(lootDialogue);
 

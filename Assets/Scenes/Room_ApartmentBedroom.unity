@@ -610,6 +610,10 @@ PrefabInstance:
       value: Interior_Bed
       objectReference: {fileID: 0}
     - target: {fileID: 3959479670939291303, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
+      propertyPath: objectID
+      value: Bedroom_Bed_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3959479670939291303, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -1391,6 +1395,10 @@ PrefabInstance:
     - target: {fileID: 2325426549165932749, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
       propertyPath: m_Name
       value: Interior_Box_Backpack
+      objectReference: {fileID: 0}
+    - target: {fileID: 3959479670939291303, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
+      propertyPath: objectID
+      value: Bedroom_Box_01
       objectReference: {fileID: 0}
     - target: {fileID: 3959479670939291303, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
       propertyPath: lootPickup

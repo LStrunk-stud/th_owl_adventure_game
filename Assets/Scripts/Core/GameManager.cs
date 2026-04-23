@@ -82,7 +82,32 @@ public class GameManager : MonoBehaviour
     public string GetLastSpawn()
         => PlayerPrefs.GetString(KEY_LAST_SPAWN, firstSpawnPoint);
 
-    // ── Save state ────────────────────────────────────────────────────────────
+    // ── Object state ─────────────────────────────────────────────────────────────
+
+    private const string PREFIX_OBJ_OPEN   = "obj_open_";
+    private const string PREFIX_OBJ_LOOTED = "obj_looted_";
+
+    public bool IsObjectOpen(string objectID)
+        => PlayerPrefs.GetInt(PREFIX_OBJ_OPEN + objectID, 0) == 1;
+
+    public void MarkObjectOpen(string objectID)
+    {
+        PlayerPrefs.SetInt(PREFIX_OBJ_OPEN + objectID, 1);
+        PlayerPrefs.SetInt(KEY_HAS_SAVE, 1);
+        PlayerPrefs.Save();
+    }
+
+    public bool IsObjectLooted(string objectID)
+        => PlayerPrefs.GetInt(PREFIX_OBJ_LOOTED + objectID, 0) == 1;
+
+    public void MarkObjectLooted(string objectID)
+    {
+        PlayerPrefs.SetInt(PREFIX_OBJ_LOOTED + objectID, 1);
+        PlayerPrefs.SetInt(KEY_HAS_SAVE, 1);
+        PlayerPrefs.Save();
+    }
+
+    // ── Save state ────────────────────────────────────────────────────────────────
 
     public bool HasSaveData()
         => PlayerPrefs.GetInt(KEY_HAS_SAVE, 0) == 1;

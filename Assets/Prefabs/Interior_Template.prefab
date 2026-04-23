@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813fd8f30bb705e4c8ab35eb39e5dec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OpenableObject
+  objectID: '[Scene]_[Type]_[Number]'
   spriteRenderer: {fileID: 0}
   closedSprite: {fileID: 0}
   openSprite: {fileID: 0}
@@ -270,9 +271,6 @@ MonoBehaviour:
   searchedDialogue: {fileID: 0}
   startOpen: 0
   OnOpened:
-    m_PersistentCalls:
-      m_Calls: []
-  OnLooted:
     m_PersistentCalls:
       m_Calls: []
   OnSearched:
