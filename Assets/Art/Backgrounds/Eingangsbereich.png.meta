@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a466d47525bae1741a19abb8750c91d6
+guid: 6f452c5153e157340b97d5361db0cc3f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2528462278408067802
-    second: WG_Wall_Black_0
+      213: -2541501911839287206
+    second: Eingangsbereich_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -74,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WG_Wall_Black_0
+      name: Eingangsbereich_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 140
-        height: 183
+        width: 580
+        height: 516
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: adadc7cbb07e61320800000000000000
-      internalID: 2528462278408067802
+      spriteID: a58d7d40a75cabcd0800000000000000
+      internalID: -2541501911839287206
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      WG_Wall_Black_0: 2528462278408067802
+      Eingangsbereich_0: -2541501911839287206
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
