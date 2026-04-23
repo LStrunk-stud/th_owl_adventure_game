@@ -5532,9 +5532,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbf129655f3639140a54f846b5aac407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorManager
-  normalCursor: {fileID: 2800000, guid: 999b43c3f68e559478e3d5df0832c9ec, type: 3}
-  clickCursor: {fileID: 2800000, guid: 250f9c8776410e94facc74c667253138, type: 3}
-  fallbackItemCursor: {fileID: 0}
+  cursorNormal: {fileID: 2800000, guid: 999b43c3f68e559478e3d5df0832c9ec, type: 3}
+  cursorClicked: {fileID: 2800000, guid: 250f9c8776410e94facc74c667253138, type: 3}
+  cursorWalk: {fileID: 2800000, guid: 1bbed0b249e05b6478545a3716afb447, type: 3}
+  cursorWalkClicked: {fileID: -743697770, guid: b688eb07c1158da4894aca1cfa2231ad, type: 3}
+  cursorDialogue: {fileID: 2800000, guid: 02efaeed2e461bc44b025c169bc3773b, type: 3}
+  cursorInteract: {fileID: 2800000, guid: eb50d04ca1d71104ea230fe8d1f85042, type: 3}
+  cursorTransition: {fileID: 2800000, guid: bb618abd1d0854146b282725483a0cdf, type: 3}
+  cursorBlocked: {fileID: 2800000, guid: c1fbcccf5db1c0e418d9d426bb6ba5fa, type: 3}
+  hotspotLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  worldCamera: {fileID: 7653294087143192373}
+  cursorScale: 2
 --- !u!1 &7753576094553907489
 GameObject:
   m_ObjectHideFlags: 0
