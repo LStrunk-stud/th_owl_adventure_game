@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 257296861261491303}
   - component: {fileID: 5579854032184595960}
   m_Layer: 6
-  m_Name: Collider
+  m_Name: PickupHotspot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PickupHotspot
   item: {fileID: 0}
   pickupDialogue: {fileID: 0}
+  noBackpackDialogue: {fileID: 0}
   isEmbedded: 1
 --- !u!1 &6728823836603348835
 GameObject:
@@ -265,9 +266,13 @@ MonoBehaviour:
   openSprite: {fileID: 0}
   lootPickup: {fileID: 0}
   openDialogue: {fileID: 0}
+  lootDialogue: {fileID: 0}
   searchedDialogue: {fileID: 0}
   startOpen: 0
   OnOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLooted:
     m_PersistentCalls:
       m_Calls: []
   OnSearched:

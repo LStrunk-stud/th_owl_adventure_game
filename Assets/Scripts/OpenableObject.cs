@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-/// Attach to an interior object that can be opened/searched.
-/// Wire to InteractHotspot.OnInteract in the Inspector.
 public class OpenableObject : MonoBehaviour
 {
     [Header("Sprites")]
@@ -11,24 +9,26 @@ public class OpenableObject : MonoBehaviour
     [SerializeField] private Sprite         openSprite;
 
     [Header("Loot")]
-    [Tooltip("Embedded PickupHotspot — set IsEmbedded = true on it.")]
     [SerializeField] private PickupHotspot lootPickup;
 
     [Header("Dialogue")]
-    [Tooltip("Plays over player when opened and no loot inside (or after loot pickup dialogue).")]
+    [Tooltip("Plays when opened.")]
     [SerializeField] private DialogueData openDialogue;
 
-    [Tooltip("Plays over player when searched again (already open).")]
+    [Tooltip("Plays after open dialogue when loot is picked up.")]
+    [SerializeField] private DialogueData lootDialogue;
+
+    [Tooltip("Plays when searched again after looting.")]
     [SerializeField] private DialogueData searchedDialogue;
 
     [Header("State")]
     [SerializeField] private bool startOpen = false;
 
-    [Header("Extra Events")]
     public UnityEvent OnOpened;
     public UnityEvent OnSearched;
 
-    private bool _isOpen = false;
+    private bool _isOpen   = false;
+    private bool _isLooted = false;
 
     void Start()
     {
@@ -43,20 +43,19 @@ public class OpenableObject : MonoBehaviour
             _isOpen = true;
             UpdateSprite();
 
-            if (lootPickup != null)
+            // Give loot immediately
+            if (lootPickup != null && !_isLooted)
             {
-                // Loot pickup handles its own dialogue (pickupDialogue on PickupHotspot)
-                // Only play openDialogue if no loot or loot has no dialogue
+                _isLooted = true;
                 lootPickup.Pickup();
+            }
 
-                // Play open dialogue only if loot has no pickup dialogue
-                if (openDialogue != null)
-                    DialogueManager.Instance.PlaySimpleDialogue(openDialogue);
-            }
-            else if (openDialogue != null)
-            {
+            // Open dialogue first, loot dialogue queues after
+            if (openDialogue != null)
                 DialogueManager.Instance.PlaySimpleDialogue(openDialogue);
-            }
+
+            if (lootDialogue != null)
+                DialogueManager.Instance.QueueDialogue(lootDialogue);
 
             OnOpened?.Invoke();
         }
@@ -64,7 +63,6 @@ public class OpenableObject : MonoBehaviour
         {
             if (searchedDialogue != null)
                 DialogueManager.Instance.PlaySimpleDialogue(searchedDialogue);
-
             OnSearched?.Invoke();
         }
     }
