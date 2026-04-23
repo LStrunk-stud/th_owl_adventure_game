@@ -18,19 +18,14 @@ public class ClickController : MonoBehaviour
         if (Mouse.current == null) return;
         if (!Mouse.current.leftButton.wasPressedThisFrame) return;
 
-        // Right-click deselects held item
         if (Mouse.current.rightButton.wasPressedThisFrame)
         {
             ItemSelectionState.Instance.Deselect();
             return;
         }
 
-        // UI clicks are handled by Unity's EventSystem — don't raycast into the world
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
-
-        // While dialogue is playing, clicks are consumed by DialogueUI — don't move or interact
         if (DialogueManager.Instance.IsPlaying) return;
-
         if (!PlayerMovement.Instance.canMove) return;
 
         Vector3 world = GetMouseWorld();
@@ -38,30 +33,28 @@ public class ClickController : MonoBehaviour
 
         if (hit.collider != null)
         {
-            // Item held: try to use
+            // Item held: try to use on UseHotspot
             if (ItemSelectionState.Instance.HasSelection)
             {
                 var use = hit.collider.GetComponent<UseHotspot>();
-                if (use != null)
-                {
-                    use.TryUse(ItemSelectionState.Instance.SelectedItem);
-                    return;
-                }
+                if (use != null) { use.TryUse(ItemSelectionState.Instance.SelectedItem); return; }
                 return;
             }
 
-            // No item held: NPC first, then pickup, then transition
+            // No item held: check all hotspot types
             var npc = hit.collider.GetComponent<NpcHotspot>();
             if (npc != null) { npc.Interact(); return; }
 
             var pickup = hit.collider.GetComponent<PickupHotspot>();
             if (pickup != null) { pickup.Pickup(); return; }
 
+            var interact = hit.collider.GetComponent<InteractHotspot>();
+            if (interact != null) { interact.Interact(); return; }
+
             var transition = hit.collider.GetComponent<TransitionHotspot>();
             if (transition != null) { transition.Activate(); return; }
         }
 
-        // Nothing hit: move player
         if (!ItemSelectionState.Instance.HasSelection)
             PlayerMovement.Instance.MoveTo(world);
     }

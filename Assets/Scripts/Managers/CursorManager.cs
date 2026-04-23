@@ -153,6 +153,7 @@ public class CursorManager : MonoBehaviour
             if (hit.collider.GetComponent<NpcHotspot>())        return CursorType.Dialogue;
             if (hit.collider.GetComponent<PickupHotspot>())     return CursorType.Interact;
             if (hit.collider.GetComponent<UseHotspot>())        return CursorType.Interact;
+            if (hit.collider.GetComponent<InteractHotspot>())    return CursorType.Interact;
             if (hit.collider.GetComponent<TransitionHotspot>()) return CursorType.Transition;
         }
 
