@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
   - speaker: {fileID: 11400000, guid: 0033f0343c9a4834ea412ac30f0b5605, type: 2}
-    text: Ein Rucksack! Den kann ich gebrauchen.
+    text: Mein Rucksack! Den brauche ich.
   options: []
   repeatingDialogue: {fileID: 0}
