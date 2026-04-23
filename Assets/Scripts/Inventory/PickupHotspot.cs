@@ -1,21 +1,22 @@
 using UnityEngine;
 
-/// Attach to any world object the player can pick up.
-/// Can also be used as embedded loot inside OpenableObject — set isEmbedded = true.
 public class PickupHotspot : MonoBehaviour
 {
-    [SerializeField] private ItemData    item;
+    [SerializeField] private ItemData     item;
 
-    [Tooltip("Optional: dialogue that plays over the player when this item is picked up.")]
+    [Header("Dialogues")]
+    [Tooltip("Plays over player when item is picked up successfully.")]
     [SerializeField] private DialogueData pickupDialogue;
 
-    [Tooltip("If true, this hotspot is controlled by a parent object (e.g. chest). " +
-             "It won't destroy itself or check backpack on pickup.")]
+    [Tooltip("Plays when player clicks item but has no backpack yet.")]
+    [SerializeField] private DialogueData noBackpackDialogue;
+
+    [Tooltip("Is controlled by a parent object (e.g. chest) — skips destroy and backpack check.")]
     [SerializeField] private bool isEmbedded = false;
 
     void Start()
     {
-        if (isEmbedded) return; // embedded loot is managed by parent
+        if (isEmbedded) return;
         if (item == null) return;
         if (GameManager.Instance.IsItemCollected(item.itemID))
             gameObject.SetActive(false);
@@ -29,10 +30,15 @@ public class PickupHotspot : MonoBehaviour
             return;
         }
 
-        // Embedded loot skips backpack check — parent object controls when this fires
+        // Can't pick up without backpack
         if (!isEmbedded && !item.isBackpack && !InventoryManager.Instance.BackpackUnlocked)
         {
-            Debug.Log($"[PickupHotspot] Can't pick up '{item.itemName}' — backpack not unlocked.");
+            // Use local dialogue if set, otherwise fall back to global one in GameManager
+            var dialogue = noBackpackDialogue ?? GameManager.Instance.noBackpackDialogue;
+            if (dialogue != null)
+                DialogueManager.Instance.PlaySimpleDialogue(dialogue);
+            else
+                Debug.Log($"[PickupHotspot] Can't pick up '{item.itemName}' — backpack not unlocked.");
             return;
         }
 
@@ -41,7 +47,6 @@ public class PickupHotspot : MonoBehaviour
         if (pickupDialogue != null)
             DialogueManager.Instance.PlaySimpleDialogue(pickupDialogue);
 
-        // Only destroy self when not embedded — embedded loot lives on the parent object
         if (!isEmbedded)
             Destroy(gameObject);
     }

@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private string firstSceneName  = "Room_ApartmentBedroom";
     [SerializeField] private string firstSpawnPoint = "SpawnStart";
 
+    [Header("Global Dialogues")]
+    [Tooltip("Plays when player tries to pick up an item without a backpack.")]
+    [SerializeField] public DialogueData noBackpackDialogue;
+
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
