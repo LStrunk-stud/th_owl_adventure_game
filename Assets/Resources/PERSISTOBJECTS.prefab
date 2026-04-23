@@ -2768,6 +2768,7 @@ MonoBehaviour:
   firstSceneName: Room_ApartmentBedroom
   firstSpawnPoint: FromLivingroom
   noBackpackDialogue: {fileID: 11400000, guid: c714126f21b3eb14b8a61e0e839a8469, type: 2}
+  wrongItemDialogue: {fileID: 11400000, guid: 54c3123645f666d4f802e968385b0f4d, type: 2}
 --- !u!1 &4190798828945830722
 GameObject:
   m_ObjectHideFlags: 0

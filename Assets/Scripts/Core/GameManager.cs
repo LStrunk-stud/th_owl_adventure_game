@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("Plays when player tries to pick up an item without a backpack.")]
     [SerializeField] public DialogueData noBackpackDialogue;
 
+    [Tooltip("Plays when player uses the wrong item on an object.")]
+    [SerializeField] public DialogueData wrongItemDialogue;
+
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
