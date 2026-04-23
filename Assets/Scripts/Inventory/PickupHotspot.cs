@@ -22,6 +22,7 @@ public class PickupHotspot : MonoBehaviour
 
     public void Pickup()
     {
+        if (!enabled) return; // disabled when already looted
         if (item == null)
         {
             Debug.LogWarning($"[PickupHotspot] No ItemData assigned on '{gameObject.name}'.");

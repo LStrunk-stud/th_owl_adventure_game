@@ -43,9 +43,10 @@ public class OpenableObject : MonoBehaviour
             Debug.LogWarning($"[OpenableObject] '{gameObject.name}' has no objectID — state won't be saved!");
         }
 
-        // Disable loot pickup if already looted
+        // Disable only the PickupHotspot component, not the whole GO
+        // (InteractHotspot on same GO must stay active for searched dialogue)
         if (_isLooted && lootPickup != null)
-            lootPickup.gameObject.SetActive(false);
+            lootPickup.enabled = false;
 
         UpdateSprite();
     }
