@@ -752,6 +752,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &979117030 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5579854032184595960, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
+  m_PrefabInstance: {fileID: 1973348223}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b25b0d6e37a3fc4a9339a3fae423209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupHotspot
 --- !u!1 &1176852338
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,6 +1252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PickupHotspot
   item: {fileID: 11400000, guid: 42647f8fa955f2045a75f7e181057cce, type: 2}
   pickupDialogue: {fileID: 0}
+  noBackpackDialogue: {fileID: 0}
   isEmbedded: 0
 --- !u!1 &1819252399
 GameObject:
@@ -1383,7 +1395,7 @@ PrefabInstance:
     - target: {fileID: 3959479670939291303, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
       propertyPath: lootPickup
       value: 
-      objectReference: {fileID: 1802585181}
+      objectReference: {fileID: 979117030}
     - target: {fileID: 3959479670939291303, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
       propertyPath: openSprite
       value: 
