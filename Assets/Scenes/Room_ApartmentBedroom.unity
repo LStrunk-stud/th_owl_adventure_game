@@ -1405,6 +1405,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 246935527929674221, guid: e1f3d11a79943ec428746f7653f8700e, type: 3}
     - target: {fileID: 3959479670939291303, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
+      propertyPath: lootDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c668a9dccecc1f40a70ad202f3682b9, type: 2}
+    - target: {fileID: 3959479670939291303, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
       propertyPath: openDialogue
       value: 
       objectReference: {fileID: 11400000, guid: b6a03df66c51ead4192295bb0ba95060, type: 2}
@@ -1471,7 +1475,7 @@ PrefabInstance:
     - target: {fileID: 5579854032184595960, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
       propertyPath: pickupDialogue
       value: 
-      objectReference: {fileID: 11400000, guid: 7c668a9dccecc1f40a70ad202f3682b9, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 6046694339770910516, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
       propertyPath: m_Sprite
       value: 

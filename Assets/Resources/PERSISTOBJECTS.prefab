@@ -230,11 +230,11 @@ RectTransform:
   - {fileID: 1334990754205350396}
   m_Father: {fileID: 5046860179782266769}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 280, y: 0}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1143990113704146193
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2719,7 +2719,7 @@ MonoBehaviour:
   optionsPanel: {fileID: 42046523876370857}
   optionButtonPrefab: {fileID: 1891791713000860293, guid: 82bb40ae0ee75b74cb20a45705a160bf, type: 3}
   optionsContainer: {fileID: 2810588333037714184}
-  screenOffset: {x: 850, y: -200}
+  screenOffset: {x: 0, y: 0}
   worldCamera: {fileID: 7653294087143192373}
 --- !u!1 &3663983960488128087
 GameObject:

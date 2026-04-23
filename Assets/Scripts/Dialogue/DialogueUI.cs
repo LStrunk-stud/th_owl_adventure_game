@@ -19,7 +19,8 @@ public class DialogueUI : MonoBehaviour
     [SerializeField] private Transform  optionsContainer;
 
     [Header("Follow Settings")]
-    [SerializeField] private Vector2 screenOffset = new Vector2(0f, 60f);
+    [Tooltip("Offset in screen pixels above the speaker. Adjust per scene if needed.")]
+    [SerializeField] private Vector2 screenOffset = new Vector2(0f, 40f);
     [SerializeField] private Camera  worldCamera;
 
     private Transform _currentSpeaker;
@@ -61,8 +62,6 @@ public class DialogueUI : MonoBehaviour
         }
     }
 
-    // ── Public ────────────────────────────────────────────────────────────────
-
     public void ShowLine(DialogueLine line, Transform speaker)
     {
         StopAllCoroutines();
@@ -75,7 +74,6 @@ public class DialogueUI : MonoBehaviour
         _showingOptions = false;
         _inputBlocked   = true;
 
-        // Hide options, keep speech panel hidden until text is set
         optionsPanel.SetActive(false);
         ClearOptions();
         speechPanelRect.gameObject.SetActive(false);
@@ -105,7 +103,6 @@ public class DialogueUI : MonoBehaviour
         _showingOptions = true;
         _inputBlocked   = true;
 
-        // Keep speech panel visible with last line — just show options below
         ClearOptions();
         optionsPanel.SetActive(false);
 
@@ -141,24 +138,38 @@ public class DialogueUI : MonoBehaviour
         _inputBlocked   = false;
     }
 
-    // ── Positioning ───────────────────────────────────────────────────────────
-
     private void PositionAboveSpeaker(Transform speaker)
     {
         if (worldCamera == null || speaker == null || canvasRect == null) return;
 
-        Vector3 screenPos = worldCamera.WorldToScreenPoint(speaker.position);
-        screenPos.x += screenOffset.x;
-        screenPos.y += screenOffset.y;
+        Vector3 worldTop = GetSpeakerTopWorld(speaker);
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            canvasRect,
-            new Vector2(screenPos.x, screenPos.y),
-            null,
-            out Vector2 localPoint
+        // Convert world position to viewport (0-1 range, resolution independent)
+        Vector3 viewport = worldCamera.WorldToViewportPoint(worldTop);
+
+        // Convert viewport to canvas local position
+        Vector2 canvasSize = canvasRect.sizeDelta;
+        Vector2 localPoint = new Vector2(
+            (viewport.x - 0.5f) * canvasSize.x,
+            (viewport.y - 0.5f) * canvasSize.y
         );
 
+        speechPanelRect.pivot            = new Vector2(0.5f, 0f);
         speechPanelRect.anchoredPosition = localPoint;
+    }
+
+    private Vector3 GetSpeakerTopWorld(Transform speaker)
+    {
+        // Search on speaker, its parent, and children
+        var sr = speaker.GetComponentInChildren<SpriteRenderer>();
+        if (sr == null && speaker.parent != null)
+            sr = speaker.parent.GetComponentInChildren<SpriteRenderer>();
+
+        if (sr != null)
+            return new Vector3(sr.bounds.center.x, sr.bounds.max.y + 0.1f, speaker.position.z);
+
+        // Fallback: position + fixed offset
+        return speaker.position + Vector3.up * 0.6f;
     }
 
     private void ClearOptions()

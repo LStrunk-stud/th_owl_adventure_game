@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
@@ -11,7 +12,6 @@ public class DialogueManager : MonoBehaviour
     public bool IsPlaying { get; private set; }
 
     [Header("End Option")]
-    [Tooltip("One is picked at random each conversation.")]
     [SerializeField] private string[] endOptionVariants = new string[]
     {
         "Tschüss.",
@@ -27,6 +27,9 @@ public class DialogueManager : MonoBehaviour
     private DialogueTrigger _currentTrigger;
     private string          _currentEndLabel;
 
+    // Queue for sequential dialogues (e.g. open box → pickup item)
+    private readonly Queue<(DialogueData data, Transform speaker)> _queue = new();
+
     void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
@@ -35,17 +38,16 @@ public class DialogueManager : MonoBehaviour
 
     // ── Public API ────────────────────────────────────────────────────────────
 
-    public void PlayDialogue(DialogueData data, Transform speakerTransform, DialogueTrigger trigger = null)
+    public void PlayDialogue(DialogueData data, Transform speaker, DialogueTrigger trigger = null)
     {
-        if (data == null) { Debug.LogError("[DialogueManager] PlayDialogue: data is null!"); return; }
+        if (data == null) return;
 
         _currentData      = data;
         _lineIndex        = 0;
-        _speakerTransform = speakerTransform;
+        _speakerTransform = speaker;
         _currentTrigger   = trigger;
         IsPlaying         = true;
 
-        // Pick a fresh end label at the start of each new top-level conversation
         if (data == trigger?.MainOptionsDialogue || _currentEndLabel == null)
             _currentEndLabel = endOptionVariants[UnityEngine.Random.Range(0, endOptionVariants.Length)];
 
@@ -59,6 +61,33 @@ public class DialogueManager : MonoBehaviour
         }
 
         DialogueUI.Instance.ShowLine(data.lines[0], _speakerTransform);
+    }
+
+    /// Plays a simple dialogue anchored to the player.
+    /// If a dialogue is already playing, queues it to play after.
+    public void PlaySimpleDialogue(DialogueData data)
+    {
+        if (data == null) return;
+
+        Transform playerTransform = PlayerMovement.Instance?.transform;
+        if (playerTransform == null) return;
+
+        if (IsPlaying)
+        {
+            _queue.Enqueue((data, playerTransform));
+            return;
+        }
+
+        PlayDialogue(data, playerTransform, null);
+    }
+
+    /// Queues a dialogue to play after the current one finishes.
+    public void QueueDialogue(DialogueData data, Transform speaker = null)
+    {
+        if (data == null) return;
+        var t = speaker ?? PlayerMovement.Instance?.transform;
+        if (t == null) return;
+        _queue.Enqueue((data, t));
     }
 
     public void Advance()
@@ -78,11 +107,7 @@ public class DialogueManager : MonoBehaviour
 
     public void ChooseOption(DialogueOption option)
     {
-        if (option.isEndOption)
-        {
-            EndDialogue();
-            return;
-        }
+        if (option.isEndOption) { EndDialogue(); return; }
 
         if (option.nextDialogue != null)
             PlayDialogue(option.nextDialogue, _speakerTransform, _currentTrigger);
@@ -90,23 +115,21 @@ public class DialogueManager : MonoBehaviour
             ReturnToMainOptions();
     }
 
-    /// Plays a dialogue anchored to the player — for item pickups and object inspections.
-    /// No trigger needed, no main options loop.
-    public void PlaySimpleDialogue(DialogueData data)
-    {
-        if (data == null) return;
-        if (PlayerMovement.Instance == null) return;
-        PlayDialogue(data, PlayerMovement.Instance.transform, null);
-    }
-
     public void EndDialogue()
     {
-        IsPlaying = false;
+        IsPlaying        = false;
         _currentEndLabel = null;
+        _currentTrigger  = null;
         PlayerMovement.Instance.canMove = true;
         DialogueUI.Instance.Hide();
-        _currentTrigger = null;
         OnDialogueEnded?.Invoke();
+
+        // Play next queued dialogue if any
+        if (_queue.Count > 0)
+        {
+            var (data, speaker) = _queue.Dequeue();
+            PlayDialogue(data, speaker, null);
+        }
     }
 
     // ── Helpers ───────────────────────────────────────────────────────────────
@@ -118,16 +141,13 @@ public class DialogueManager : MonoBehaviour
 
         if (_currentData.options != null && _currentData.options.Length > 0)
         {
-            // Only append end option on the main options menu
-            DialogueOption[] opts = isMainOptions
+            var opts = isMainOptions
                 ? BuildOptionsWithEnd(_currentData.options)
                 : _currentData.options;
-
             DialogueUI.Instance.ShowOptions(opts, _speakerTransform);
             return;
         }
 
-        // No options — return to main options loop if possible
         if (_currentTrigger != null
             && _currentTrigger.MainOptionsDialogue != null
             && !isMainOptions)
@@ -149,7 +169,6 @@ public class DialogueManager : MonoBehaviour
 
     private DialogueOption[] BuildOptionsWithEnd(DialogueOption[] original)
     {
-        // Don't add if designer already placed an end option manually
         foreach (var o in original)
             if (o.isEndOption) return original;
 
