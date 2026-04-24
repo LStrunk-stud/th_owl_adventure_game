@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
   - speaker: {fileID: 11400000, guid: 096d46a893f0eec4aa76b52b8919b692, type: 2}
-    text: Ich warte auf jemanden.
-  options:
-  - optionText: Auf wen?
-    nextDialogue: {fileID: 11400000, guid: e13775822cc7c134c8448bfa382f75b7, type: 2}
-    isEndOption: 0
+    text: Eigentlich hab ich meine Powerbank noch gebraucht, aber du kannst sie haben.
+  options: []
   repeatingDialogue: {fileID: 0}

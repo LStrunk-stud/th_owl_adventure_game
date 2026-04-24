@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dialogue_Lee_Blocked
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
-  - speaker: {fileID: 11400000, guid: 8b70f07df4a4ed648b07b7971cfbf521, type: 2}
+  - speaker: {fileID: 11400000, guid: c29dd5d492a434b45b0765c8ee2cda81, type: 2}
     text: Die Labore sind heute leider geschlossen. Alle Studenten haben sich in
       der Bibliothek versammelt!
   options: []

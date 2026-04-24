@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
   - speaker: {fileID: 11400000, guid: 096d46a893f0eec4aa76b52b8919b692, type: 2}
-    text: "Das wei\xDFt du doch!"
+    text: "Solange du willst, ich hab grad Strom am Schreibtisch. Aber wenn ich unterwegs
+      sie mal brauche und sie weg ist, gibt's \xC4rger."
   options: []
   repeatingDialogue: {fileID: 0}

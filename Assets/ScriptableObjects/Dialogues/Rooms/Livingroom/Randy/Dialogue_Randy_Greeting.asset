@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
   - speaker: {fileID: 11400000, guid: 096d46a893f0eec4aa76b52b8919b692, type: 2}
-    text: Hey, was machst du da?!
+    text: "Oh hey, du r\xE4umst auf? "
+  - speaker: {fileID: 11400000, guid: 096d46a893f0eec4aa76b52b8919b692, type: 2}
+    text: "\r\nWenn du schon dabei bist k\xF6nntest du vielleicht hier kurz sauber
+      machen?"
   options: []
   repeatingDialogue: {fileID: 0}
