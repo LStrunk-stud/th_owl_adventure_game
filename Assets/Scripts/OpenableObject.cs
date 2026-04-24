@@ -90,6 +90,10 @@ public class OpenableObject : MonoBehaviour
     private void UpdateSprite()
     {
         if (spriteRenderer == null) return;
-        spriteRenderer.sprite = _isOpen ? openSprite : closedSprite;
+        // Only swap sprite if open sprite is assigned
+        if (_isOpen && openSprite != null)
+            spriteRenderer.sprite = openSprite;
+        else if (!_isOpen && closedSprite != null)
+            spriteRenderer.sprite = closedSprite;
     }
 }

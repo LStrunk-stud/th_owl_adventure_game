@@ -15,10 +15,10 @@ MonoBehaviour:
   lines: []
   options:
   - optionText: Was soll ich hier suchen?
-    nextDialogue: {fileID: 0}
+    nextDialogue: {fileID: 11400000, guid: cb1ace7d1467afa4db9aa452f7326029, type: 2}
     isEndOption: 0
   - optionText: Wie funktioniert das hier?
-    nextDialogue: {fileID: 0}
+    nextDialogue: {fileID: 11400000, guid: 9cd00c1ecac32784bb939004c0488f06, type: 2}
     isEndOption: 0
   - optionText: Ich bin fertig.
     nextDialogue: {fileID: 0}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dialogue_Assistant_Repeat
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
-  - speaker: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: ddd92296fabbf5643b2bf2ebdcbd04fb, type: 2}
     text: Beeil dich! Wir haben nicht ewig Zeit.
   options: []
   repeatingDialogue: {fileID: 0}

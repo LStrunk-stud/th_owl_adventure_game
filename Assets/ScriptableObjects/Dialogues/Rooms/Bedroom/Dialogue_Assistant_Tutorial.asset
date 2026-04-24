@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Dialogue_Assistant_Tutorial
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
-  - speaker: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: ddd92296fabbf5643b2bf2ebdcbd04fb, type: 2}
     text: Klick irgendwo hin um dich zu bewegen.
-  - speaker: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: ddd92296fabbf5643b2bf2ebdcbd04fb, type: 2}
     text: Klick auf Objekte um sie zu untersuchen oder aufzuheben.
-  - speaker: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: ddd92296fabbf5643b2bf2ebdcbd04fb, type: 2}
     text: Wenn du ein Item im Inventar hast, klick es an. Dann kannst du es auf Objekte
       anwenden
   options: []

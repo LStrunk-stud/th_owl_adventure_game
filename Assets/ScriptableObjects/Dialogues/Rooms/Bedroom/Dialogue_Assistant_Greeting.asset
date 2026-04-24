@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Dialogue_Assistant_Greeting
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
-  - speaker: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: ddd92296fabbf5643b2bf2ebdcbd04fb, type: 2}
     text: "Hey! Endlich wach. Wir m\xFCssen los, du hast heute deine Projektpr\xE4sentation
       an der Hochschule."
-  - speaker: {fileID: 0}
+  - speaker: {fileID: 11400000, guid: ddd92296fabbf5643b2bf2ebdcbd04fb, type: 2}
     text: Dein Zeug liegt irgendwo in diesem Chaos. Such mal die Kisten durch.
   options: []
   repeatingDialogue: {fileID: 0}

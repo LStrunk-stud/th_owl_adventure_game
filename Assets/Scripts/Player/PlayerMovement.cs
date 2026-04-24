@@ -6,7 +6,10 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerMovement Instance;
 
     [SerializeField] private float speed = 3f;
-    [SerializeField] private float stopDistance = 0.05f;
+    [SerializeField] private float stopDistance = 0.1f;
+
+    [Tooltip("Vertical offset so feet reach the click point. Half the sprite height.")]
+    [SerializeField] private float feetOffset = 0.3f;
 
     private PolygonCollider2D walkArea;
     private Rigidbody2D rb;

@@ -3,11 +3,7 @@ using UnityEngine;
 
 public class TransitionHotspot : MonoBehaviour
 {
-    public enum TransitionType
-    {
-        WalkThenFade,   // Player walks to standPoint, then fades — for indoor doors
-        FadeOnly,       // Instant fade without walking — for teleports
-    }
+    public enum TransitionType { WalkThenFade, FadeOnly }
 
     [Header("Target")]
     public string targetScene;
@@ -15,12 +11,16 @@ public class TransitionHotspot : MonoBehaviour
 
     [Header("Transition")]
     public TransitionType transitionType = TransitionType.WalkThenFade;
-    [Tooltip("Fade duration in seconds. 0 = use default from SceneTransition.")]
     public float fadeDuration = 0f;
 
     [Header("Walk Position")]
-    [Tooltip("Where the player walks before the transition. Required for WalkThenFade.")]
     public Transform standPoint;
+
+    [Header("Condition")]
+    [Tooltip("Player must have this item before transition is allowed.")]
+    [SerializeField] private ItemData requiredItem;
+    [Tooltip("Dialogue shown when condition is not met.")]
+    [SerializeField] private DialogueData blockedDialogue;
 
     private bool _triggered = false;
 
@@ -28,6 +28,22 @@ public class TransitionHotspot : MonoBehaviour
     {
         if (_triggered) return;
         if (string.IsNullOrEmpty(targetScene)) return;
+
+        // Check condition — backpack uses BackpackUnlocked, other items use HasItem
+        if (requiredItem != null)
+        {
+            bool hasItem = requiredItem.isBackpack
+                ? InventoryManager.Instance.BackpackUnlocked
+                : InventoryManager.Instance.HasItem(requiredItem);
+
+            if (!hasItem)
+            {
+                if (blockedDialogue != null)
+                    DialogueManager.Instance.PlaySimpleDialogue(blockedDialogue);
+                else
+                return;
+            }
+        }
 
         _triggered = true;
         StartCoroutine(RunTransition());
@@ -40,20 +56,45 @@ public class TransitionHotspot : MonoBehaviour
         PlayerMovement.Instance.canMove = false;
 
         if (transitionType == TransitionType.WalkThenFade && standPoint != null)
+        {
             yield return StartCoroutine(WalkToStandPoint());
-
+        }
         yield return StartCoroutine(
             SceneTransition.Instance.FadeOut(fadeDuration > 0 ? fadeDuration : -1f)
         );
-
         SceneLoader.Instance.LoadRoom(targetScene, targetSpawnName);
     }
 
     private IEnumerator WalkToStandPoint()
     {
-        PlayerMovement.Instance.ForceMoveTo(standPoint.position);
+        Vector3 target = standPoint.position;
 
-        while (PlayerMovement.Instance.IsMoving())
+        PlayerMovement.Instance.ForceMoveTo(target);
+
+        float threshold = 0.3f;
+        float timeout   = 5f;
+        float elapsed   = 0f;
+
+        while (elapsed < timeout)
+        {
+            float dist = Vector2.Distance(
+                PlayerMovement.Instance.transform.position,
+                target
+            );
+
+            if (dist <= threshold)
+            {
+                PlayerMovement.Instance.StopMoving();
+                break;
+            }
+
+            elapsed += Time.deltaTime;
             yield return null;
+        }
+
+        if (elapsed >= timeout)
+        {
+            PlayerMovement.Instance.StopMoving();
+        }
     }
 }

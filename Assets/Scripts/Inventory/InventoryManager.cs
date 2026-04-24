@@ -8,7 +8,11 @@ public class InventoryManager : MonoBehaviour
 
     public event Action OnInventoryChanged;
     public event Action OnBackpackUnlocked;
-    public event Action OnInventoryReset;   // NEW: UI listens to fully reset itself
+    public event Action OnInventoryReset;
+
+    [Header("Starting Items")]
+    [Tooltip("Items added to inventory at the start of every new game.")]
+    [SerializeField] private ItemData[] startingItems;
 
     private readonly List<ItemData> _items = new();
     private bool _backpackUnlocked = false;
@@ -24,6 +28,7 @@ public class InventoryManager : MonoBehaviour
         if (GameManager.Instance.PendingReset)
         {
             GameManager.Instance.ClearPendingReset();
+            GiveStartingItems();
             return;
         }
         RestoreFromSave();
@@ -67,15 +72,30 @@ public class InventoryManager : MonoBehaviour
 
     public bool HasItem(ItemData item) => _items.Contains(item);
 
-    /// Wipes runtime state and notifies UI to fully reset.
     public void ResetInventory()
     {
         _items.Clear();
         _backpackUnlocked = false;
-        OnInventoryReset?.Invoke();   // UI uses this to hide everything
+        OnInventoryReset?.Invoke();
     }
 
     // ── Save / Restore ────────────────────────────────────────────────────────
+
+    private void GiveStartingItems()
+    {
+        if (startingItems == null || startingItems.Length == 0) return;
+
+        foreach (var item in startingItems)
+        {
+            if (item == null) continue;
+            // Starting items bypass backpack check
+            _items.Add(item);
+            GameManager.Instance.MarkItemCollected(item.itemID);
+        }
+
+        if (_items.Count > 0)
+            OnInventoryChanged?.Invoke();
+    }
 
     private void RestoreFromSave()
     {
