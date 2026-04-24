@@ -1,35 +1,20 @@
 using System.Collections;
 using UnityEngine;
 
-/// <summary>
-/// Attach to a child GameObject (e.g. "FadeWall") that has a SpriteRenderer.
-/// The GameObject also needs a Collider2D set to "Is Trigger".
-/// When the player enters the trigger area the sprite fades out,
-/// when the player leaves it fades back in.
-/// </summary>
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class FadeWall : MonoBehaviour
 {
-    [Tooltip("Alpha value when the wall is fully visible.")]
-    [Range(0f, 1f)]
-    public float visibleAlpha = 1f;
-
-    [Tooltip("Alpha value when the player is behind the wall.")]
-    [Range(0f, 1f)]
-    public float hiddenAlpha = 0f;
-
-    [Tooltip("How many seconds the fade takes.")]
+    [Range(0f, 1f)] public float visibleAlpha  = 1f;
+    [Range(0f, 1f)] public float hiddenAlpha   = 0f;
     public float fadeDuration = 0.25f;
 
-    private SpriteRenderer sr;
-    private Coroutine fadeCoroutine;
+    private SpriteRenderer _sr;
+    private Coroutine      _fadeCoroutine;
 
     void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
-
-        // Make sure the collider is a trigger
+        _sr = GetComponent<SpriteRenderer>();
         GetComponent<Collider2D>().isTrigger = true;
     }
 
@@ -47,27 +32,35 @@ public class FadeWall : MonoBehaviour
 
     private void Fade(float targetAlpha)
     {
-        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
-        fadeCoroutine = StartCoroutine(FadeRoutine(targetAlpha));
+        if (!gameObject.activeInHierarchy)
+        {
+            // Can't run coroutine — set alpha directly
+            Color c = _sr.color;
+            c.a = targetAlpha;
+            _sr.color = c;
+            return;
+        }
+
+        if (_fadeCoroutine != null) StopCoroutine(_fadeCoroutine);
+        _fadeCoroutine = StartCoroutine(FadeRoutine(targetAlpha));
     }
 
     private IEnumerator FadeRoutine(float targetAlpha)
     {
-        float startAlpha = sr.color.a;
-        float elapsed = 0f;
+        float startAlpha = _sr.color.a;
+        float elapsed    = 0f;
 
         while (elapsed < fadeDuration)
         {
             elapsed += Time.deltaTime;
-            float t = Mathf.Clamp01(elapsed / fadeDuration);
-            Color c = sr.color;
-            c.a = Mathf.Lerp(startAlpha, targetAlpha, t);
-            sr.color = c;
+            Color c = _sr.color;
+            c.a = Mathf.Lerp(startAlpha, targetAlpha, Mathf.Clamp01(elapsed / fadeDuration));
+            _sr.color = c;
             yield return null;
         }
 
-        Color final = sr.color;
+        Color final = _sr.color;
         final.a = targetAlpha;
-        sr.color = final;
+        _sr.color = final;
     }
 }
