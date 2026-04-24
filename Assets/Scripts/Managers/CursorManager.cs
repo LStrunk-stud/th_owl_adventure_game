@@ -154,8 +154,8 @@ public class CursorManager : MonoBehaviour
             if (hit.collider.GetComponent<PickupHotspot>())     return CursorType.Interact;
             if (hit.collider.GetComponent<UseHotspot>())        return CursorType.Interact;
             if (hit.collider.GetComponent<InteractHotspot>())    return CursorType.Interact;
-            if (hit.collider.GetComponent<MultiUseHotspot>())     return CursorType.Interact;
-            if (hit.collider.GetComponent<TransitionHotspot>()) return CursorType.Transition;
+            if (hit.collider.GetComponent<TransitionHotspot>())        return CursorType.Transition;
+            if (hit.collider.GetComponent<BlockedTransitionHotspot>()) return CursorType.Blocked;
         }
 
         if (PlayerMovement.Instance.IsWalkable(world)) return CursorType.Walk;
