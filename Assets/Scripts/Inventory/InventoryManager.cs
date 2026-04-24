@@ -14,6 +14,9 @@ public class InventoryManager : MonoBehaviour
     [Tooltip("Items added to inventory at the start of every new game.")]
     [SerializeField] private ItemData[] startingItems;
 
+    [Tooltip("Items added to inventory when the backpack is picked up.")]
+    [SerializeField] private ItemData[] backpackItems;
+
     private readonly List<ItemData> _items = new();
     private bool _backpackUnlocked = false;
 
@@ -49,6 +52,8 @@ public class InventoryManager : MonoBehaviour
             _backpackUnlocked = true;
             GameManager.Instance.MarkBackpackUnlocked();
             GameManager.Instance.MarkItemCollected(item.itemID);
+            // Add items that start inside the backpack
+            GiveBackpackItems();
             OnBackpackUnlocked?.Invoke();
             return;
         }
@@ -80,6 +85,20 @@ public class InventoryManager : MonoBehaviour
     }
 
     // ── Save / Restore ────────────────────────────────────────────────────────
+
+    private void GiveBackpackItems()
+    {
+        if (backpackItems == null || backpackItems.Length == 0) return;
+        foreach (var item in backpackItems)
+        {
+            if (item == null) continue;
+            if (GameManager.Instance.IsItemCollected(item.itemID)) continue;
+            _items.Add(item);
+            GameManager.Instance.MarkItemCollected(item.itemID);
+        }
+        if (_items.Count > 0)
+            OnInventoryChanged?.Invoke();
+    }
 
     private void GiveStartingItems()
     {

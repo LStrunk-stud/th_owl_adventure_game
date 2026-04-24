@@ -18,6 +18,19 @@ public class DialogueTrigger : MonoBehaviour
 
     public DialogueData MainOptionsDialogue => mainOptionsDialogue;
 
+    /// Play a specific dialogue anchored to this NPC — ignores internal state.
+    /// Queues if a dialogue is already playing.
+    public void PlaySpecificDialogue(DialogueData data)
+    {
+        if (data == null) return;
+        Transform anchor = speakerAnchor != null ? speakerAnchor : transform;
+
+        if (DialogueManager.Instance.IsPlaying)
+            DialogueManager.Instance.QueueDialogue(data, anchor);
+        else
+            DialogueManager.Instance.PlayDialogue(data, anchor, null);
+    }
+
     private bool _hasSpoken;
 
     void Start()

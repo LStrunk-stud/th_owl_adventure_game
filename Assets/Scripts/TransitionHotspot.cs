@@ -19,6 +19,10 @@ public class TransitionHotspot : MonoBehaviour
     [Header("Condition")]
     [Tooltip("Player must have this item before transition is allowed.")]
     [SerializeField] private ItemData requiredItem;
+
+    [Tooltip("All items must be in inventory before transition. For packed backpack gate.")]
+    [SerializeField] private ItemData[] requiredItems;
+
     [Tooltip("Dialogue shown when condition is not met.")]
     [SerializeField] private DialogueData blockedDialogue;
 
