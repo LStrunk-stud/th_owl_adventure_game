@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 141a35346fea118459b4bd279ffa599c
+guid: 688adc3a3b56bdf4aa40855d383c1875
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1391020639589306279
-    second: Informatik_Raum_0
+      213: -8510366849478615563
+    second: Eingangsbereich_Wall_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Informatik_Raum_0
+      name: Eingangsbereich_Wall_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 480
-        height: 270
+        width: 467
+        height: 133
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7af05f9d6e5ed4310800000000000000
-      internalID: 1391020639589306279
+      spriteID: 5fd1194b07a15e980800000000000000
+      internalID: -8510366849478615563
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Informatik_Raum_0: 1391020639589306279
+      Eingangsbereich_Wall_0: -8510366849478615563
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
