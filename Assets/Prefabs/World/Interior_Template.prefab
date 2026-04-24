@@ -29,7 +29,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6751863028271100206}
   - {fileID: 7667228409925508418}
   - {fileID: 718682666276419154}
   m_Father: {fileID: 0}
@@ -188,7 +187,8 @@ Transform:
   m_LocalPosition: {x: -0.024, y: 0.095, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6751863028271100206}
   m_Father: {fileID: 4654444657597707784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7528280643741279832
@@ -238,15 +238,15 @@ SpriteRenderer:
   m_SortingLayerID: -1969440447
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5314991746970371671, guid: e1f3d11a79943ec428746f7653f8700e, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.38, y: 0.32}
+  m_Size: {x: 0.76, y: 0.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &3959479670939291303
@@ -301,13 +301,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8539729661148351188}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.037, y: 0.107, z: 0}
+  m_LocalRotation: {x: 0.35356435, y: -0, z: -0, w: 0.9354102}
+  m_LocalPosition: {x: -0.014, y: -0.053, z: -0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4654444657597707784}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 7667228409925508418}
+  m_LocalEulerAnglesHint: {x: 41.411, y: 0, z: 0}
 --- !u!212 &6046694339770910516
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -355,14 +355,14 @@ SpriteRenderer:
   m_SortingLayerID: -1969440447
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Sprite: {fileID: -5314991746970371671, guid: e1f3d11a79943ec428746f7653f8700e, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.38, y: 0.32}
+  m_Size: {x: 0.76, y: 0.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

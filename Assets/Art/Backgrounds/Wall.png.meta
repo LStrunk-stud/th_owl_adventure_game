@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 0868f3077d3a58d48afc2802e3c51325
+guid: f2fecf4bd7dab0a4fb0fb4ecd0e7abcb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7713885428649385119
-    second: Character_Sprite_Idle_0
-  - first:
-      213: -8289532565173193850
-    second: Character_Sprite_Idle_1
-  - first:
-      213: -8073360255706220197
-    second: Character_Sprite_Idle_2
-  - first:
-      213: 4652620063945471268
-    second: Character_Sprite_Idle_3
+      213: -5356574185940491189
+    second: Wall_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -84,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: 4
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -122,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character_Sprite_Idle_0
+      name: Wall_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 27
-        height: 68
+        width: 47
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,74 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 163aa439216c2f490800000000000000
-      internalID: -7713885428649385119
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character_Sprite_Idle_1
-      rect:
-        serializedVersion: 2
-        x: 31
-        y: 0
-        width: 28
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 683b1d24d0aa5fc80800000000000000
-      internalID: -8289532565173193850
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character_Sprite_Idle_2
-      rect:
-        serializedVersion: 2
-        x: 63
-        y: 0
-        width: 28
-        height: 68
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b59bfd63f99a5ff80800000000000000
-      internalID: -8073360255706220197
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Character_Sprite_Idle_3
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 0
-        width: 27
-        height: 68
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 425335a2c4d619040800000000000000
-      internalID: 4652620063945471268
+      spriteID: b446df18820a9a5b0800000000000000
+      internalID: -5356574185940491189
       vertices: []
       indices: 
       edges: []
@@ -223,10 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Character_Sprite_Idle_0: -7713885428649385119
-      Character_Sprite_Idle_1: -8289532565173193850
-      Character_Sprite_Idle_2: -8073360255706220197
-      Character_Sprite_Idle_3: 4652620063945471268
+      Wall_0: -5356574185940491189
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
