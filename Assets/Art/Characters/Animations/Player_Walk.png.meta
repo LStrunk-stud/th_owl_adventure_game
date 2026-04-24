@@ -118,7 +118,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -155,7 +155,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -194,15 +194,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spieler-Walk_0
+      name: walk_down_0
       rect:
         serializedVersion: 2
         x: 0
         y: 65
         width: 18
         height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -216,15 +216,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_1
+      name: walk_left_0
       rect:
         serializedVersion: 2
         x: 2
         y: 95
         width: 15
         height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -238,15 +238,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_2
+      name: walk_down_1
       rect:
         serializedVersion: 2
         x: 31
         y: 63
         width: 19
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -260,15 +260,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_3
+      name: walk_left_1
       rect:
         serializedVersion: 2
         x: 32
         y: 95
         width: 17
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -282,15 +282,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_4
+      name: walk_left_2
       rect:
         serializedVersion: 2
         x: 62
         y: 95
         width: 22
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -304,15 +304,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_5
+      name: walk_down_2
       rect:
         serializedVersion: 2
         x: 62
         y: 64
         width: 19
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -326,15 +326,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_6
+      name: walk_down_3
       rect:
         serializedVersion: 2
         x: 94
         y: 65
         width: 19
         height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -348,15 +348,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_7
+      name: walk_left_3
       rect:
         serializedVersion: 2
         x: 97
         y: 95
         width: 16
         height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -370,15 +370,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_8
+      name: walk_down_4
       rect:
         serializedVersion: 2
         x: 126
         y: 63
         width: 18
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -392,15 +392,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_9
+      name: walk_left_4
       rect:
         serializedVersion: 2
         x: 130
         y: 95
         width: 15
         height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -414,15 +414,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_10
+      name: walk_down_5
       rect:
         serializedVersion: 2
         x: 158
         y: 63
         width: 19
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -436,15 +436,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_11
+      name: walk_left_5
       rect:
         serializedVersion: 2
         x: 159
         y: 95
         width: 17
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -458,15 +458,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_12
+      name: walk_down_6
       rect:
         serializedVersion: 2
         x: 190
         y: 64
         width: 18
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -480,15 +480,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_13
+      name: walk_left_6
       rect:
         serializedVersion: 2
         x: 192
         y: 95
         width: 16
         height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -502,15 +502,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_14
+      name: walk_right_0
       rect:
         serializedVersion: 2
         x: 1
         y: 31
         width: 16
         height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -524,15 +524,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_15
+      name: walk_right_1
       rect:
         serializedVersion: 2
         x: 33
         y: 31
         width: 17
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -546,15 +546,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_16
+      name: walk_right_2
       rect:
         serializedVersion: 2
         x: 64
         y: 31
         width: 15
         height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -568,15 +568,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_17
+      name: walk_right_3
       rect:
         serializedVersion: 2
         x: 96
         y: 31
         width: 16
         height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -590,15 +590,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_18
+      name: walk_right_4
       rect:
         serializedVersion: 2
         x: 125
         y: 31
         width: 22
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -612,15 +612,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_19
+      name: walk_right_5
       rect:
         serializedVersion: 2
         x: 160
         y: 31
         width: 17
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -634,15 +634,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_20
+      name: walk_right_6
       rect:
         serializedVersion: 2
         x: 192
         y: 31
         width: 15
         height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -656,15 +656,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_21
+      name: walk_up_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 17
         height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -678,15 +678,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_22
+      name: walk_up_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 17
         height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -700,15 +700,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_23
+      name: walk_up_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 16
         height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -722,15 +722,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_24
+      name: walk_up_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 17
         height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -744,15 +744,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_25
+      name: walk_up_4
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 17
         height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -766,15 +766,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_26
+      name: walk_up_5
       rect:
         serializedVersion: 2
         x: 160
         y: 0
         width: 17
         height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -788,15 +788,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spieler-Walk_27
+      name: walk_up_6
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 16
         height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -813,7 +813,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4e2a5d1d213dd9146a645b0e1529ffc5
     internalID: 0
     vertices: []
     indices: 
@@ -823,34 +823,34 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Spieler-Walk_0: 5420029110683710122
-      Spieler-Walk_1: 7277708144175247591
-      Spieler-Walk_10: 3263337193122528184
-      Spieler-Walk_11: -5291633765841157565
-      Spieler-Walk_12: 7818318457773470429
-      Spieler-Walk_13: 6997810403177975699
-      Spieler-Walk_14: 3994275366738555973
-      Spieler-Walk_15: -6268039586376504410
-      Spieler-Walk_16: 8388517526131762013
-      Spieler-Walk_17: 8069984326330384513
-      Spieler-Walk_18: 6338156453846877026
-      Spieler-Walk_19: 4420300145844713198
-      Spieler-Walk_2: -1593003759181716083
-      Spieler-Walk_20: -3718264104504391588
-      Spieler-Walk_21: 1290212546863099817
-      Spieler-Walk_22: 4828511185023988710
-      Spieler-Walk_23: -3897866828690743313
-      Spieler-Walk_24: 3627435592163688729
-      Spieler-Walk_25: -37428695478988427
-      Spieler-Walk_26: 7028460718688321659
-      Spieler-Walk_27: -6649083886990636822
-      Spieler-Walk_3: 532172808099901490
-      Spieler-Walk_4: 1982301071695886552
-      Spieler-Walk_5: 7882544967554493703
-      Spieler-Walk_6: 1970825434676937941
-      Spieler-Walk_7: 995663860578955963
-      Spieler-Walk_8: 1738277442072274152
-      Spieler-Walk_9: 791135689595415762
+      walk_down_0: 5420029110683710122
+      walk_down_1: -1593003759181716083
+      walk_down_2: 7882544967554493703
+      walk_down_3: 1970825434676937941
+      walk_down_4: 1738277442072274152
+      walk_down_5: 3263337193122528184
+      walk_down_6: 7818318457773470429
+      walk_left_0: 7277708144175247591
+      walk_left_1: 532172808099901490
+      walk_left_2: 1982301071695886552
+      walk_left_3: 995663860578955963
+      walk_left_4: 791135689595415762
+      walk_left_5: -5291633765841157565
+      walk_left_6: 6997810403177975699
+      walk_right_0: 3994275366738555973
+      walk_right_1: -6268039586376504410
+      walk_right_2: 8388517526131762013
+      walk_right_3: 8069984326330384513
+      walk_right_4: 6338156453846877026
+      walk_right_5: 4420300145844713198
+      walk_right_6: -3718264104504391588
+      walk_up_0: 1290212546863099817
+      walk_up_1: 4828511185023988710
+      walk_up_2: -3897866828690743313
+      walk_up_3: 3627435592163688729
+      walk_up_4: -37428695478988427
+      walk_up_5: 7028460718688321659
+      walk_up_6: -6649083886990636822
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

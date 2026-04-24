@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 targetPos;
     private bool moving;
 
+    /// Read-only access for PlayerAnimator to derive movement direction.
+    public Vector3 TargetPos => targetPos;
+
     void Awake()
     {
         Instance = this;
