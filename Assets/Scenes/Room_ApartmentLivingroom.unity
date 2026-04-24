@@ -1649,6 +1649,10 @@ PrefabInstance:
       propertyPath: targetSpawnName
       value: FromLivingroom
       objectReference: {fileID: 0}
+    - target: {fileID: 5897516521385575546, guid: aa44efa85c4f60647bf58d2f64e4772b, type: 3}
+      propertyPath: requiredItems.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7037959071919460007, guid: aa44efa85c4f60647bf58d2f64e4772b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.119
@@ -2055,6 +2059,10 @@ PrefabInstance:
       propertyPath: targetScene
       value: Room_Entrancehall
       objectReference: {fileID: 0}
+    - target: {fileID: 5897516521385575546, guid: aa44efa85c4f60647bf58d2f64e4772b, type: 3}
+      propertyPath: requiredItem
+      value: 
+      objectReference: {fileID: 11400000, guid: ba28347cb54d3b14a8b93dec94b8704d, type: 2}
     - target: {fileID: 5897516521385575546, guid: aa44efa85c4f60647bf58d2f64e4772b, type: 3}
       propertyPath: blockedDialogue
       value: 
