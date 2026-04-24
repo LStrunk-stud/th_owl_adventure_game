@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b300bd985ed74142afc91ffba5a6262, type: 3}
   m_Name: Item_CircuitBoard
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemID: 
-  itemName: 
+  itemID: Item_CircuitBoard
+  itemName: Platine
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 250376668, guid: a1df2decf31774945a91e9ed03b922cd, type: 3}
   isBackpack: 0

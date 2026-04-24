@@ -15,5 +15,5 @@ MonoBehaviour:
   itemID: Item_IDCard
   itemName: Studierendenausweis
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: -504318391, guid: a1df2decf31774945a91e9ed03b922cd, type: 3}
   isBackpack: 0

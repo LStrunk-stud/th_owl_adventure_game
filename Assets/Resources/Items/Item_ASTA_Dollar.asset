@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b300bd985ed74142afc91ffba5a6262, type: 3}
   m_Name: Item_ASTA_Dollar
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemID: 
-  itemName: 
+  itemID: Item_ASTA_Dollar
+  itemName: ASTA Dollar
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 1839452337, guid: a1df2decf31774945a91e9ed03b922cd, type: 3}
   isBackpack: 0

@@ -15,5 +15,5 @@ MonoBehaviour:
   itemID: Item_USBStick
   itemName: USBStick
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 143718523, guid: a1df2decf31774945a91e9ed03b922cd, type: 3}
   isBackpack: 0
