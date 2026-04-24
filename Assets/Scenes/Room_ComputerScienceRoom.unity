@@ -484,11 +484,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 897627122131380044, guid: a3d44531090541545aa34507dfe0264c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.62031996
+      value: 1.797
       objectReference: {fileID: 0}
     - target: {fileID: 897627122131380044, guid: a3d44531090541545aa34507dfe0264c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.07697
+      value: 0.231
       objectReference: {fileID: 0}
     - target: {fileID: 897627122131380044, guid: a3d44531090541545aa34507dfe0264c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -584,7 +584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5217912955634011686, guid: a3d44531090541545aa34507dfe0264c, type: 3}
       propertyPath: m_Name
-      value: NPC
+      value: Mandy
       objectReference: {fileID: 0}
     - target: {fileID: 9150301562630350506, guid: a3d44531090541545aa34507dfe0264c, type: 3}
       propertyPath: m_LocalScale.x
