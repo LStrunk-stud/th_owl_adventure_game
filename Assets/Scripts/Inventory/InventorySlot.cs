@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/// Attached to the InventorySlot prefab.
-/// Displays one item and notifies ItemSelectionState when clicked.
 [RequireComponent(typeof(Button))]
 public class InventorySlot : MonoBehaviour
 {
@@ -13,7 +11,7 @@ public class InventorySlot : MonoBehaviour
     public void Setup(ItemData item)
     {
         _item = item;
-        iconImage.sprite = item.icon;
+        iconImage.sprite  = item.icon;
         iconImage.enabled = item.icon != null;
         GetComponent<Button>().onClick.RemoveAllListeners();
         GetComponent<Button>().onClick.AddListener(OnClicked);
@@ -21,6 +19,16 @@ public class InventorySlot : MonoBehaviour
 
     private void OnClicked()
     {
+        // If holding an item and clicking a different slot — try combination
+        if (ItemSelectionState.Instance.HasSelection &&
+            ItemSelectionState.Instance.SelectedItem != _item)
+        {
+            CombinationManager.Instance.TryCombine(
+                ItemSelectionState.Instance.SelectedItem, _item);
+            return;
+        }
+
+        // Normal selection
         ItemSelectionState.Instance.SelectItem(_item);
     }
 }
