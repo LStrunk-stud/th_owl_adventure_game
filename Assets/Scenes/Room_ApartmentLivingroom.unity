@@ -174,6 +174,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1141010285}
     m_Modifications:
+    - target: {fileID: 718682666276419154, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.858
+      objectReference: {fileID: 0}
+    - target: {fileID: 718682666276419154, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.443
+      objectReference: {fileID: 0}
+    - target: {fileID: 771098528676582911, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.34601215
+      objectReference: {fileID: 0}
+    - target: {fileID: 771098528676582911, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.45632297
+      objectReference: {fileID: 0}
+    - target: {fileID: 771098528676582911, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.020763502
+      objectReference: {fileID: 0}
+    - target: {fileID: 771098528676582911, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.15540954
+      objectReference: {fileID: 0}
     - target: {fileID: 2325426549165932749, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
       propertyPath: m_Name
       value: Interior_Worktop_Single
@@ -605,6 +629,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item_Banana
       objectReference: {fileID: 0}
+    - target: {fileID: 5994863066533347574, guid: 9dbff4ff650bc4d48bd6aa96d4899d79, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2715887
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994863066533347574, guid: 9dbff4ff650bc4d48bd6aa96d4899d79, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.016822532
+      objectReference: {fileID: 0}
     - target: {fileID: 7218153007503757662, guid: 9dbff4ff650bc4d48bd6aa96d4899d79, type: 3}
       propertyPath: m_Size.x
       value: 0.18
@@ -617,6 +649,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -4976191349620804748, guid: a1df2decf31774945a91e9ed03b922cd, type: 3}
+    - target: {fileID: 7218153007503757662, guid: 9dbff4ff650bc4d48bd6aa96d4899d79, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7218153007503757662, guid: 9dbff4ff650bc4d48bd6aa96d4899d79, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -711,7 +747,19 @@ MonoBehaviour:
   interactLabel: 
   OnInteract:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 593660804}
+        m_TargetAssemblyTypeName: CleanupItem, Assembly-CSharp
+        m_MethodName: Cleanup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &603831378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -859,6 +907,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 950563763}
+  - {fileID: 1583058430}
   m_Father: {fileID: 1431715735}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &688002908
@@ -1232,7 +1281,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1717580015}
   m_Father: {fileID: 1431715735}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &893030936
@@ -1406,6 +1456,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2128905986720928094, guid: a3d44531090541545aa34507dfe0264c, type: 3}
+      propertyPath: npcID
+      value: Randy_Livingroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128905986720928094, guid: a3d44531090541545aa34507dfe0264c, type: 3}
       propertyPath: dialogueData
       value: 
       objectReference: {fileID: 11400000, guid: e4b4c99e4cd84cb4db6544fb7e23586b, type: 2}
@@ -1483,17 +1537,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 897627122131380044, guid: a3d44531090541545aa34507dfe0264c, type: 3}
   m_PrefabInstance: {fileID: 950563762}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &950563764 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2128905986720928094, guid: a3d44531090541545aa34507dfe0264c, type: 3}
-  m_PrefabInstance: {fileID: 950563762}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e82edda867964914d91ad2de66a31a29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
 --- !u!1 &1141010284
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,6 +1681,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door_Livingroom_to_Campus
       objectReference: {fileID: 0}
+    - target: {fileID: 5897516521385575546, guid: aa44efa85c4f60647bf58d2f64e4772b, type: 3}
+      propertyPath: requiredItems.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897516521385575546, guid: aa44efa85c4f60647bf58d2f64e4772b, type: 3}
+      propertyPath: 'requiredItems.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 42647f8fa955f2045a75f7e181057cce, type: 2}
+    - target: {fileID: 5897516521385575546, guid: aa44efa85c4f60647bf58d2f64e4772b, type: 3}
+      propertyPath: 'requiredItems.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 6889cbbc1c7ea79428ae2476ae3bb534, type: 2}
+    - target: {fileID: 5897516521385575546, guid: aa44efa85c4f60647bf58d2f64e4772b, type: 3}
+      propertyPath: 'requiredItems.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ba28347cb54d3b14a8b93dec94b8704d, type: 2}
+    - target: {fileID: 5897516521385575546, guid: aa44efa85c4f60647bf58d2f64e4772b, type: 3}
+      propertyPath: 'requiredItems.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fa1db180a83ac5d4d9c84af2d41fc149, type: 2}
+    - target: {fileID: 5897516521385575546, guid: aa44efa85c4f60647bf58d2f64e4772b, type: 3}
+      propertyPath: 'requiredItems.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fd49f65d6322ab842ace54aa9ca9aeb3, type: 2}
     - target: {fileID: 7964272420648425737, guid: aa44efa85c4f60647bf58d2f64e4772b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.182
@@ -1843,6 +1910,83 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7528280643741279832, guid: 3b60c8a56a1093444b81009866a8e12d, type: 3}
   m_PrefabInstance: {fileID: 226006352}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1583058428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1583058430}
+  - component: {fileID: 1583058431}
+  - component: {fileID: 1583058429}
+  m_Layer: 0
+  m_Name: Randy_CleanupTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1583058429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583058428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ca215a5efa30934b83eb2bd08b263b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTriggerCallback
+  OnDialogueEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1717580014}
+        m_TargetAssemblyTypeName: PickupHotspot, Assembly-CSharp
+        m_MethodName: Pickup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!4 &1583058430
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583058428}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 625574800}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1583058431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583058428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e82edda867964914d91ad2de66a31a29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueTrigger
+  npcID: 
+  greetingDialogue: {fileID: 11400000, guid: d025bb988fd4e144c9870e4d5741e9c9, type: 2}
+  mainOptionsDialogue: {fileID: 0}
+  repeatingDialogue: {fileID: 0}
+  speakerAnchor: {fileID: 0}
 --- !u!1 &1583620565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,9 +2038,21 @@ MonoBehaviour:
   OnAllCleaned:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 950563764}
+      - m_Target: {fileID: 1583058431}
         m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
         m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1583058429}
+        m_TargetAssemblyTypeName: DialogueTriggerCallback, Assembly-CSharp
+        m_MethodName: StartListening
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2125,6 +2281,54 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.1094916, y: 0.78225565}
   m_EdgeRadius: 0
+--- !u!1 &1717580013
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1717580015}
+  - component: {fileID: 1717580014}
+  m_Layer: 0
+  m_Name: Powerbank_Hidden
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1717580014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717580013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b25b0d6e37a3fc4a9339a3fae423209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PickupHotspot
+  item: {fileID: 11400000, guid: a9b64566bd4f95b47a9892705b68ced2, type: 2}
+  pickupDialogue: {fileID: 0}
+  noBackpackDialogue: {fileID: 0}
+  isEmbedded: 1
+--- !u!4 &1717580015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717580013}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 829967883}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1888583725
 GameObject:
   m_ObjectHideFlags: 0

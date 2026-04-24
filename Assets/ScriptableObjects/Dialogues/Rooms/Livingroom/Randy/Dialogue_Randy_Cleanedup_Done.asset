@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b577ddb795ab10f44b8b39f5a07fafc3, type: 3}
-  m_Name: Dialogue_CleanUp_Banana
+  m_Name: Dialogue_Randy_Cleanedup_Done
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   lines:
-  - speaker: {fileID: 11400000, guid: 0033f0343c9a4834ea412ac30f0b5605, type: 2}
-    text: So, weg damit!
+  - speaker: {fileID: 11400000, guid: 096d46a893f0eec4aa76b52b8919b692, type: 2}
+    text: Danke! Endlich sieht es hier aus wie eine Wohnung.
+  - speaker: {fileID: 11400000, guid: 096d46a893f0eec4aa76b52b8919b692, type: 2}
+    text: Hier, nimm meine Powerbank. Die brauchst du heute mehr als ich.
   options: []
   repeatingDialogue: {fileID: 0}
