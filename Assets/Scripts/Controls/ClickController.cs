@@ -33,7 +33,7 @@ public class ClickController : MonoBehaviour
 
         if (hit.collider != null)
         {
-            // Item held: try to use on UseHotspot or MultiUseHotspot
+            // Item held: try to use on UseHotspot, MultiUseHotspot or WorkbenchCleanup
             if (ItemSelectionState.Instance.HasSelection)
             {
                 var use = hit.collider.GetComponent<UseHotspot>();
@@ -41,6 +41,9 @@ public class ClickController : MonoBehaviour
 
                 var multiUse = hit.collider.GetComponent<MultiUseHotspot>();
                 if (multiUse != null) { multiUse.TryUse(ItemSelectionState.Instance.SelectedItem); return; }
+
+                var workbench = hit.collider.GetComponent<WorkbenchCleanup>();
+                if (workbench != null) { workbench.TryDeposit(ItemSelectionState.Instance.SelectedItem); return; }
 
                 return;
             }
