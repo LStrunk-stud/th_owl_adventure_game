@@ -601,13 +601,70 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1388882956118578308, guid: a3d44531090541545aa34507dfe0264c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1289893333}
+    - targetCorrespondingSourceObject: {fileID: 1388882956118578308, guid: a3d44531090541545aa34507dfe0264c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1289893334}
   m_SourcePrefab: {fileID: 100100000, guid: a3d44531090541545aa34507dfe0264c, type: 3}
 --- !u!4 &1289893331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 897627122131380044, guid: a3d44531090541545aa34507dfe0264c, type: 3}
   m_PrefabInstance: {fileID: 1289893330}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1289893332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1388882956118578308, guid: a3d44531090541545aa34507dfe0264c, type: 3}
+  m_PrefabInstance: {fileID: 1289893330}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1289893333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289893332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4132384234e68f84bac7456474ab3d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UseHotspot
+  requiredItem: {fileID: 11400000, guid: fa1db180a83ac5d4d9c84af2d41fc149, type: 2}
+  consumeItem: 1
+  wrongItemDialogue: {fileID: 0}
+  OnUsed:
+    m_PersistentCalls:
+      m_Calls: []
+  OnWrongItem:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1289893334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289893332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1769ce4b0c12c3e4d8396b9698248d1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MultiUseHotspot
+  entries:
+  - requiredItem: {fileID: 11400000, guid: fa1db180a83ac5d4d9c84af2d41fc149, type: 2}
+    consumeItem: 1
+    successDialogue: {fileID: 0}
+    alreadyGivenDialogue: {fileID: 0}
+    OnUsed:
+      m_PersistentCalls:
+        m_Calls: []
+    alreadyGiven: 0
+  wrongItemDialogue: {fileID: 0}
+  OnAllItemsGiven:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1613080713
 GameObject:
   m_ObjectHideFlags: 0

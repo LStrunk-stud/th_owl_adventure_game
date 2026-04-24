@@ -33,11 +33,15 @@ public class ClickController : MonoBehaviour
 
         if (hit.collider != null)
         {
-            // Item held: try to use on UseHotspot
+            // Item held: try to use on UseHotspot or MultiUseHotspot
             if (ItemSelectionState.Instance.HasSelection)
             {
                 var use = hit.collider.GetComponent<UseHotspot>();
                 if (use != null) { use.TryUse(ItemSelectionState.Instance.SelectedItem); return; }
+
+                var multiUse = hit.collider.GetComponent<MultiUseHotspot>();
+                if (multiUse != null) { multiUse.TryUse(ItemSelectionState.Instance.SelectedItem); return; }
+
                 return;
             }
 
