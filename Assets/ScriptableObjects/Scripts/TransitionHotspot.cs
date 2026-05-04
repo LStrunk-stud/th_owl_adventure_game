@@ -33,20 +33,38 @@ public class TransitionHotspot : MonoBehaviour
         if (_triggered) return;
         if (string.IsNullOrEmpty(targetScene)) return;
 
-        // Check condition — backpack uses BackpackUnlocked, other items use HasItem
+        bool canPass = true;
+
         if (requiredItem != null)
         {
             bool hasItem = requiredItem.isBackpack
                 ? InventoryManager.Instance.BackpackUnlocked
                 : InventoryManager.Instance.HasItem(requiredItem);
 
-            if (!hasItem)
+            if (!hasItem) canPass = false;
+        }
+
+        if (requiredItems != null && requiredItems.Length > 0)
+        {
+            foreach (ItemData item in requiredItems)
             {
-                if (blockedDialogue != null)
-                    DialogueManager.Instance.PlaySimpleDialogue(blockedDialogue);
-                else
-                return;
+
+                if (item != null && !InventoryManager.Instance.HasItem(item))
+                {
+                    canPass = false;
+                    break;
+                }
             }
+        }
+
+        // Kontrolle
+        if (!canPass)
+        {
+            if (blockedDialogue != null)
+            {
+                DialogueManager.Instance.PlaySimpleDialogue(blockedDialogue);
+            }
+            return;
         }
 
         _triggered = true;
@@ -76,8 +94,8 @@ public class TransitionHotspot : MonoBehaviour
         PlayerMovement.Instance.ForceMoveTo(target);
 
         float threshold = 0.3f;
-        float timeout   = 5f;
-        float elapsed   = 0f;
+        float timeout = 5f;
+        float elapsed = 0f;
 
         while (elapsed < timeout)
         {

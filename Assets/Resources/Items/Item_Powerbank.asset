@@ -15,5 +15,5 @@ MonoBehaviour:
   itemID: Item_Powerbank
   itemName: Powerbank
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 1471552191142380692, guid: c597eb91062a98b44a6fd7c136eef320, type: 3}
   isBackpack: 0
