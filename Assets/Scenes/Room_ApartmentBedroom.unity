@@ -2817,7 +2817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: AstarPathfindingProject::AstarPath
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIezONAqiawIAACUFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVEtzokAQ/ivWnNcUoFHc264as4dEK+5WLlxGaGTKYYaaR3yk/O87PYAQc6L5+uvurx/wSZjQFaRGqpVi2YvMgPwcELTJj0HnfIYT3UuxZRdoOe8sMwWSqOe8UcOkw0MM07IEo1j6S+w5kgMHWsFyqcpltoe51EY7OKdcg3MpaTBaOOhzQE7uMZxhyNlZ0RSti7NmweDqzBSEAdVRW2JLq1lWpJyWFWQouSNPHqLHho+mpwrXUMMKHkLvTyXnTDeKiDlXvuNtVYACbDlj1DXoVWC/BbB9YVBsP3ad5xpMo0zR84IpN6c6Kfkt6+GVVB9qeR+UWywTRrGXVSd9+eYfht6dK1k+t3XDAGuYgqWHN3pOqTa96fbhxVfhVhwpP9Adh/cCxKtcKWlF5pxGWQy1GqJF93prbV5AeujwWuodaKvvO4oeRvE4jCejyXIYTJuFYUNXP4rTnLNy5/cwroEtl372+ArKLeqPE+9vRTctOBQV/dPwl+77R9U4npjSxrkaukCpO2kVUsnSzw87s2YulQAPNw1UICg3541LY+7Xeefrlb3zPFH8fJrija/9Ku5CPNzxg+DOtZHH2+J0IY8voIu1NZwJ6ESj49XNaS6FqK+tP5M2bGtVTtNe2N6y7OuZkV082Y0nAeSj3SQaxdNhMIPHWfQYxlOI4iiaEn+HTLg+Kd/UQpvxuKWJLrlwN9f+VQYrRSt/+ZmixxW7lLI3ciZyuU0VgFjXGW7CQbki7iPNlhlzA9qCMUz4fZPPhHCZHiBLbokS3+nyZBRNuiwJqdiHNIgkZO5/IwlB+HbXGwUfDI5YvE12Jdf/UEsDBBQAAAgIAAAIIewzvEhnbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSkoVZkomZQWqacZKZkbGFua6BZaqppZGpoYV5qpGFkZG5UixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAIIezONAqiawIAACUFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIewzvEhnbQAAAHgAAAAJACQAAAAAAAAAAAAAALgCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAcAMAAAAA
+    dataString: UEsDBBQAAAgIAAAIIeztKj6tbAIAACYFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMty4jAQ/BVK5yVlmwBmb7tAyB5IqLBbufgi7DFWIUsuPXgkxb+vRraxQ06Wu3tGPQ/7kzChK0iNVCvFsrXMgPwcEDyTH4OOfIYz3UuxZR/Qat5ZZgoUUa95o4ZJh4cYpmUJRrH0l9hzFAcOtILlUpXLbA9zqY12cE65BkcpaTBaOOhzQM7uMZxhyMWdoimePtxpFgyu7piCMKA6aStsZbXKipTTsoIMLXfi0UMYjdvMD9HYa4WrqJEFDZ9KzpluLBFzqXzJ26oABVhzxqir0NvAggtg+8Jgzn7sa55rMI01RS8Lplyj6qTkt6y7V1J9qP0dKbd4TRjF3laddP2NH4aezpUsn9t7wwDvMAVLD2/0klJteu3tw4uvxq04UX6gOw7vBYgXuVLSisyRRlkMtRqiRfd6K21eQHro8NrqHWir70OKHkbxYxhPRpPlMJg2E8OCrr4V5zln5c7P4bEGtlz63uMrKDeoP868XxbdlOBQdPRPw1+6729VQzwxpY2jGrlAqztpFUrJ0vcPK7NmLpUADzcFVCAoN5eNS2Pux3nH9a69Y54ofj/N5Q3XfhZ3IR7u9EFwR23k6TY4XcjTGnTxag1nAjrTSLy4Ps2lEPW29XvShm2tymnaC9tbln1dM7KLJ7vHSQD5aDeJRvF0GMxgPIvGYTyFKI6iKfF7yISrk/JNbbRpjxua6JILt3Ptb2WwUrTym58pelqxj1L2Ws5ELrepAhCvdYabcVDuEveRZsuMuQZtwRgm/LzJZ0K4TA+QJbdEia90eTaKJl2WhFTsKA0iCZn7/0hCEL7t9UbBkcEJL2+TXcn1P1BLAwQUAAAICAAACCHsM7xIZ20AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0UpKFWZKJmUFqmnGSmZGxhbmugWWqqaWRqaGFeaqRhZGRuVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAACCHs7So+rWwCAAAmBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHsM7xIZ20AAAB4AAAACQAkAAAAAAAAAAAAAAC5AgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAHEDAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -3570,6 +3570,7 @@ GameObject:
   - component: {fileID: 1613080718}
   - component: {fileID: 1613080720}
   - component: {fileID: 1613080721}
+  - component: {fileID: 1613080722}
   m_Layer: 7
   m_Name: Walls
   m_TagString: Untagged
@@ -3871,6 +3872,52 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 3, y: 0.1}
+  m_EdgeRadius: 0
+--- !u!61 &1613080722
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613080713}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 1.6, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.1, y: 1}
   m_EdgeRadius: 0
 --- !u!1001 &1665341479
 PrefabInstance:

@@ -421,7 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: AstarPathfindingProject::AstarPath
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIezONAqiawIAACUFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVEtzokAQ/ivWnNcUoFHc264as4dEK+5WLlxGaGTKYYaaR3yk/O87PYAQc6L5+uvurx/wSZjQFaRGqpVi2YvMgPwcELTJj0HnfIYT3UuxZRdoOe8sMwWSqOe8UcOkw0MM07IEo1j6S+w5kgMHWsFyqcpltoe51EY7OKdcg3MpaTBaOOhzQE7uMZxhyNlZ0RSti7NmweDqzBSEAdVRW2JLq1lWpJyWFWQouSNPHqLHho+mpwrXUMMKHkLvTyXnTDeKiDlXvuNtVYACbDlj1DXoVWC/BbB9YVBsP3ad5xpMo0zR84IpN6c6Kfkt6+GVVB9qeR+UWywTRrGXVSd9+eYfht6dK1k+t3XDAGuYgqWHN3pOqTa96fbhxVfhVhwpP9Adh/cCxKtcKWlF5pxGWQy1GqJF93prbV5AeujwWuodaKvvO4oeRvE4jCejyXIYTJuFYUNXP4rTnLNy5/cwroEtl372+ArKLeqPE+9vRTctOBQV/dPwl+77R9U4npjSxrkaukCpO2kVUsnSzw87s2YulQAPNw1UICg3541LY+7Xeefrlb3zPFH8fJrija/9Ku5CPNzxg+DOtZHH2+J0IY8voIu1NZwJ6ESj49XNaS6FqK+tP5M2bGtVTtNe2N6y7OuZkV082Y0nAeSj3SQaxdNhMIPHWfQYxlOI4iiaEn+HTLg+Kd/UQpvxuKWJLrlwN9f+VQYrRSt/+ZmixxW7lLI3ciZyuU0VgFjXGW7CQbki7iPNlhlzA9qCMUz4fZPPhHCZHiBLbokS3+nyZBRNuiwJqdiHNIgkZO5/IwlB+HbXGwUfDI5YvE12Jdf/UEsDBBQAAAgIAAAIIewzvEhnbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSkoVZkomZQWqacZKZkbGFua6BZaqppZGpoYV5qpGFkZG5UixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAIIezONAqiawIAACUFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIewzvEhnbQAAAHgAAAAJACQAAAAAAAAAAAAAALgCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAcAMAAAAA
+    dataString: UEsDBBQAAAgIAAAIIey58xmVbgIAACYFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMtyozAQ/BWXzmsX4Bfe267tOHtI4op3KxcuMgxGZSFResR2Uv731QgwxDkhuntGPQ/4JEzoClIj1Uax7ElmQH4OCJ7Jj0FHPsKZHqTYsQ9oNW8sMwWKqNe8UsOkw0MM07IEo1j6Sxw4igMHWsFyqcp1doCl1EY7OKdcg6OUNBgtHPQ5IGf3GC4w5OJO0RxPH+60CAZXd0xBGFCdtBW2slplRcppWUGGljvxdDSLpk3AdBRNvVa4ihpZMAo9n0rOmW4sEXOpfMm7qgAFWHPGqKvQ28CCC2CHwqDbfuxLnmswjTVFLyumXKPqpOS3rLtXUn2s/b1TbvGaMIq9rTrp0zd+GHo6V7J8bO8NA7zDFCw9vtJLSrXptbcPr74at+JE+ZHuObwVIJ7lRkkrMkcaZTHUaohW3euttGUB6bHDa6t3oK2+DykajeNJGM/Gs/UwmDcTw4KuvhXnJWfl3s9hUgM7Ln3v8RWUG9QfZ94vi25KcCg6+qfhLz30t6ohHpjSxlGNXKDVvbQKpWTt+4eVWbOUSoCHmwIqEJSby9alMffjvON6194xDxS/n+byhms/i7sQD3f6ILijtvJ0G5wu5OkJdPFiDWcCOtNIPLs+LaUQ9bb1e9KG7azKadoLO1iWfV0zso9n+8ksgHy8n0XjeD4MFjBdRNMwnkMUR9Gc+D1kwtVJ+bY22rTHDU10yYXbufa3MtgoWvnNzxQ9bdhHKXstZyKXu1QBiJc6w804KHeJ+0izdcZcg3ZgDBN+3uQzIVymR8iSW6LEV7o+G0WTLktCKvYuDSIJWfr/SEIQvu31VsE7gxNe3ia7kut/UEsDBBQAAAgIAAAIIewzvEhnbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSkoVZkomZQWqacZKZkbGFua6BZaqppZGpoYV5qpGFkZG5UixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAIIey58xmVbgIAACYFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIewzvEhnbQAAAHgAAAAJACQAAAAAAAAAAAAAALsCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAcwMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -1095,6 +1095,7 @@ GameObject:
   - component: {fileID: 1613080721}
   - component: {fileID: 1613080720}
   - component: {fileID: 1613080719}
+  - component: {fileID: 1613080722}
   m_Layer: 7
   m_Name: Walls
   m_TagString: Untagged
@@ -1197,7 +1198,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 2, y: -1.25}
+  m_Offset: {x: 2, y: -1.7}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1207,7 +1208,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 0.5}
+  m_Size: {x: 2, y: 0.1}
   m_EdgeRadius: 0
 --- !u!61 &1613080718
 BoxCollider2D:
@@ -1243,7 +1244,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.8, y: -1.25}
+  m_Offset: {x: -0.8, y: -1.7}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1253,7 +1254,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 0.5}
+  m_Size: {x: 2, y: 0.1}
   m_EdgeRadius: 0
 --- !u!61 &1613080719
 BoxCollider2D:
@@ -1289,7 +1290,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -2.3, y: -1.2}
+  m_Offset: {x: -2.3, y: -1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1299,7 +1300,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
 --- !u!61 &1613080720
 BoxCollider2D:
@@ -1392,6 +1393,52 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 0.2, y: 5}
+  m_EdgeRadius: 0
+--- !u!61 &1613080722
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613080713}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.5, y: 2.3}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!1001 &1634877967
 PrefabInstance:
