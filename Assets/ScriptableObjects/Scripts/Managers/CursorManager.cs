@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Pathfinding;
 
 public class CursorManager : MonoBehaviour
 {
