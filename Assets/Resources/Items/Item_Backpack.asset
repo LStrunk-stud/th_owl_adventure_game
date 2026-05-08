@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b300bd985ed74142afc91ffba5a6262, type: 3}
   m_Name: Item_Backpack
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: Backpack
+  itemID: Item_Backpack
+  itemName: Rucksack
   description: 
   icon: {fileID: -5063992412410766752, guid: 87d436dd3ec29bb449790c23567c27da, type: 3}
   isBackpack: 1

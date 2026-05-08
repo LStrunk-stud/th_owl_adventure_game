@@ -26,6 +26,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Room_ApartmentLivingroom.unity
     guid: 46c1649c80018404a821cd82c3e7d82b
+  - enabled: 1
+    path: Assets/Scenes/Room_Entrancehall.unity
+    guid: ae7fe760661e3084a9b403dc9348cb19
+  - enabled: 1
+    path: Assets/Scenes/Room_Library.unity
+    guid: b379c7c0e8becec4fbe6f14cdbab4204
+  - enabled: 1
+    path: Assets/Scenes/unfinished/Room_ComputerScienceRoom.unity
+    guid: c4d9efab23b0281409566903c29318cc
+  - enabled: 1
+    path: Assets/Scenes/unfinished/Room_WoodLaboratory.unity
+    guid: a9300e6f57fe0ed45a5d4948a89f03ed
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: e0ef46deb01711640870b961661b188e, type: 3}
   m_UseUCBPForAssetBundles: 0
